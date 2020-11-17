@@ -1,0 +1,42 @@
+footer{
+  margin-top: 30px;
+}
+
+.Opciones{
+  display: flex;
+  flex-direction: column;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+.Opciones button{
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 3px;
+  display: inline-block;
+  width: fit-content;
+
+  border-radius: 8px;
+  background-color: lightblue;
+}
+
+#loading{
+  border: 16px solid #F3FFFA;
+  border-top: 16px solid #42544D;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: none;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

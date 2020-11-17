@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Analisis de algoritmos</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<script src="./script.js" type="module"></script>
+</head>
+
+<body>
+  Ingresa tu lista de numeros separados por coma, o genera una lista con:
+  <br>
+  n = <input type="text" id="nNums" value="420" size="3" maxlength="6">
+  <button onclick="makeRandomList()">Genera lista al azar</button>
+  <br>
+	Lista de numeros a ordenar (separados por coma):
+	<textarea id="f_numeros" rows="8" cols="45" style="width: 100%">
+20,18,13,5,6,8,9,10,11,12,13,3,4,7,2,1,15,2,16</textarea>
+  <strong>Selecciona algoritmo con el cual ordenar</strong>
+  <div class="Opciones">
+    <button onclick="f1()" value="test">TEST</button>
+    <button onclick="order('insSor')" value="insSort">INSERTION-SORT</button>
+    <button onclick="order('selSor')" value="selSort">SELECTION-SORT</button>
+  </div>
+ <!--  <form onsubmit="return order">
+    <input type="radio" id="insSor" name="algorithm" value="insSor">
+    <label for="insSor">INSERTION-SORT</label><br>
+    <input type="submit" value="Ordenar">
+  </form> -->
+  <div id="loading"></div>
+  <div id="delay"></div>
+	<textarea id="ans" rows="8" cols="45" style="width: 100%" disabled=true>
+    Esperando algoritmo seleccionado
+  </textarea>
+</body>
+
+<footer>
+	Hecho por salvador
+</footer>
+
+</html>
