@@ -8,7 +8,7 @@ const insertionSort = (A) => {
     }
     A[i+1] = key
   }
-  return A;
+  return A; //opcional
 }
 
 export default insertionSort;

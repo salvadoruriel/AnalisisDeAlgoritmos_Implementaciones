@@ -12,7 +12,7 @@ const selectionSort = (A) => {
     A[i] = A[key]
     A[key] = min
   }
-  return A;
+  return A; //opcional
 }
 
 export default selectionSort;
