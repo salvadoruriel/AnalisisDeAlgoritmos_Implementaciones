@@ -3,8 +3,11 @@ import selectionSort from './sortingAlgorithms/selection_sort.js';
 import mergeSort from './sortingAlgorithms/merge_sort.js';
 import { makeRandomList } from './randomHandling.js';
 window.makeRandomList = makeRandomList
+
 //regarding graph visualization:
 //https://stackoverflow.com/questions/7034/graph-visualization-library-in-javascript
+//JavaScript is pass by value on primitives
+//  and call by sharing (copy of a reference) in objects (or arrays)
 
 window.f1 = function f1() {
   console.log("test hello");
@@ -53,16 +56,8 @@ const promiseHandler = async (func, Arr, ...rest) => {
 
 
 const order = (alg) => {
-  var t0 = performance.now();
   document.getElementById("loading").style.display = "block";
-  var t1 = performance.now();
-  console.log('Hi 1: ' + (t1 - t0));
-  //innerHTML works for default, but use value instead if user gives their data
-  //var text = document.getElementById('f_numeros').innerHTML.split(',')
-
   var text = document.getElementById('f_numeros').value.split(',');
-  var t2 = performance.now();
-  console.log('Hi 2: ' + (t2 - t0));
   /*
   var t0 = performance.now();
   var Arr = text.map(Number);
@@ -78,8 +73,6 @@ const order = (alg) => {
   //TODO: ask on stackoverflow why with short example.
   //Actually the fastest
   var Arr = text.map((txt) => parseInt(txt, 10));
-  var t3 = performance.now();
-  console.log('Hi 3: ' + (t3 - t0));
 
   var res = 'err';
   switch (alg) {
@@ -99,8 +92,6 @@ const order = (alg) => {
       console.log("err " + alg);
       break;
   }
-  var t4 = performance.now();
-  console.log('Hi 4: ' + (t4 - t0));
 
   if (res != 'err') {//todo bien
   } else {
