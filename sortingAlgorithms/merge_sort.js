@@ -3,9 +3,7 @@ const merge_sort = (A,p,r) => {
     var q = Math.floor( (p+r) /2 );
     merge_sort(A,p,q);
     merge_sort(A,q+1,r);
-    console.log(p+" " +q+" "+ r + "- Arr1: "+ A);
     merge(A,p,q,r);
-    console.log(p+" " +q+" "+ r + "- Arr2: "+ A);
   }
   return A; //opcional
 }
@@ -28,7 +26,6 @@ const merge = (A,p,q,r) => {
   i = 0
   j = 0
   for(var k = p; k <= r; k++){
-    console.log("k:"+k+" - "+L[i] +" : "+ (L[i] !=Number.MAX_SAFE_INTEGER && L[i] <= R[j])+ " "+A )
     if(L[i] !=Number.MAX_SAFE_INTEGER && L[i] <= R[j]){
       A[k] = L[i]
       i = i+1
@@ -37,7 +34,6 @@ const merge = (A,p,q,r) => {
       A[k] = R[j]
       j = j+1
     }
-    console.log("k----------------"+ (L[i] !=Number.MAX_SAFE_INTEGER && L[i] <= R[j])+ " "+A )
   }
 }
 //Se puede cambiar Number.MAX_SAFE_INTEGER por Number.MAX_VALUE
