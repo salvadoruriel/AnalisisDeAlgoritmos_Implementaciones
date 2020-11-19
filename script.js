@@ -1,6 +1,7 @@
 import insertionSort from './sortingAlgorithms/insertion_sort.js';
 import selectionSort from './sortingAlgorithms/selection_sort.js';
 import mergeSort from './sortingAlgorithms/merge_sort.js';
+import heapSort from './sortingAlgorithms/heap_sort.js';
 import { makeRandomList } from './randomHandling.js';
 window.makeRandomList = makeRandomList
 
@@ -87,6 +88,9 @@ const order = (alg) => {
       break;
     case 'merSor':
       res = promiseHandler(mergeSort, Arr, 0, Arr.length -1);
+      break;
+    case 'heaSor':
+      res = promiseHandler(heapSort, Arr);
       break;
     default:
       console.log("err " + alg);

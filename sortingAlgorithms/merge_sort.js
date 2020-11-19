@@ -1,14 +1,14 @@
-const merge_sort = (A,p,r) => {
+const mergeSort = (A,p,r) => {
   if(p<r){
     var q = Math.floor( (p+r) /2 );
-    merge_sort(A,p,q);
-    merge_sort(A,q+1,r);
+    mergeSort(A,p,q);
+    mergeSort(A,q+1,r);
     merge(A,p,q,r);
   }
   return A; //opcional
 }
 
-export default merge_sort;
+export default mergeSort;
 
 const merge = (A,p,q,r) => {
   var n1 = q-p+1;
