@@ -12,17 +12,11 @@ const radixSort = (A, k) => {
   var B = new Array(A.length); //arreglo auxiliar para counting
   for (var i = 1; i <= k; i++){
     //con este cambio evito copias y trabajo sobre el arreglo a ordenar
-    console.log(i+ " i%2 " + (i % 2 != 0)+ " A: " +A );
     if(i % 2 != 0) countingSort_digitMod(A,B,i,9);
     else countingSort_digitMod(B,A,i,9);
-    console.log(B);
   }
   //similarmente regreso el arreglo auxilidar de counting
   //  que resulta ser el ordenado.
-  console.log("--------------");
-  console.log("i: " +i);
-  console.log(" A: " +A);
-  console.log(" B: " +B);
   i--;
   if(i % 2 != 0) return B;
   else return A;
@@ -31,8 +25,6 @@ const radixSort = (A, k) => {
 export default pre_radixSort;
 
 const countingSort_digitMod = (A, B, dig, k) => {
-  console.log(" A: " +A);
-  console.log(" B: " +B);
   var val = 0;
 
   var C = new Array(k + 1);//arreglo auxiliar de 0 a k inclusivo
@@ -41,7 +33,6 @@ const countingSort_digitMod = (A, B, dig, k) => {
 
   for (var j = 0; j < A.length; j++){
     val = getDigit(A[j], dig);
-    console.log(val);
     C[val] = C[val] + 1;
   }
 
