@@ -4,6 +4,7 @@ import mergeSort from './sortingAlgorithms/merge_sort.js';
 import heapSort from './sortingAlgorithms/heap_sort.js';
 import quickSort from './sortingAlgorithms/quick_sort.js';
 import randomizedQuickSort from './sortingAlgorithms/randomized_quick_sort.js';
+import countingSort from './sortingAlgorithms/counting_sort.js';
 import { makeRandomList } from './randomHandling.js';
 window.makeRandomList = makeRandomList
 
@@ -100,6 +101,10 @@ const order = (alg) => {
     case 'ranSor':
       res = promiseHandler(randomizedQuickSort, Arr, 0, Arr.length-1);
       break;
+    case 'couSor':
+      var Barr = new Array(Arr.length);
+      res = promiseHandler(countingSort, Arr, Barr, findMax(Arr));
+      break;
     default:
       console.log("err " + alg);
       break;
@@ -112,7 +117,21 @@ const order = (alg) => {
 }
 window.order = order
 
-//UNUSED LEGACY
+//para arreglos muy grandes tiene que ser manual la busqueda
+//mejor solucion comprobada en (por mi obvio): https://jsben.ch/ckr3c
+const findMax = (Arr) => {
+  var max = Arr[0];
+  for(var i=1; i< Arr.length; i++){
+    max = Arr[i] > max ? Arr[i] : max;
+  }
+  return max;
+}
+
+
+///////////////////UNUSED LEGACY
+/////
+/////
+/////
 const measureAlgorithm = (func, Arr) => {
   //alternativamente (con mismo string en console para medir tiempos correctos)
   //console.time('foo')
@@ -125,3 +144,5 @@ const measureAlgorithm = (func, Arr) => {
   console.log("Esta funcion tomo: " + (t1 - t0) + " millisegundos.");
   return ans;
 }
+//codigo por salvador
+//adaptaciones de algoritmos vistos en clases o de libro Cormen, en ultimo caso hechos por mi

@@ -6,7 +6,7 @@ export const makeRandomList = () =>{
   //var maxVal = Number.MAX_SAFE_INTEGER;
   var minVal = 0;
   var maxVal = nNums*3;
-  var Arr = new Array(nNums)
+  var Arr = new Array(nNums);
   for(var i =0; i< nNums; i++){
     Arr[i] = Math.floor(Math.random() * (maxVal-minVal) ) + minVal;
   }
