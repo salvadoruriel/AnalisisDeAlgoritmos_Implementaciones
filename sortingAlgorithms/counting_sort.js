@@ -10,6 +10,7 @@ const countingSort = (A,B,k) => {
     B[C[A[j]]] = A[j];
     C[A[j]] = C[A[j]] -1;
   }
+  B.shift(); //quita primer elemento, necesario por las listas en pseudocodigo.
   return B; //ordered array
 }
 

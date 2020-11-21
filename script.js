@@ -5,6 +5,7 @@ import heapSort from './sortingAlgorithms/heap_sort.js';
 import quickSort from './sortingAlgorithms/quick_sort.js';
 import randomizedQuickSort from './sortingAlgorithms/randomized_quick_sort.js';
 import countingSort from './sortingAlgorithms/counting_sort.js';
+import radixSort from './sortingAlgorithms/radix_sort.js';
 import { makeRandomList } from './randomHandling.js';
 window.makeRandomList = makeRandomList
 
@@ -104,6 +105,9 @@ const order = (alg) => {
     case 'couSor':
       var Barr = new Array(Arr.length);
       res = promiseHandler(countingSort, Arr, Barr, findMax(Arr));
+      break;
+    case 'radSor':
+      res = promiseHandler(radixSort, Arr, findMax(Arr));
       break;
     default:
       console.log("err " + alg);
