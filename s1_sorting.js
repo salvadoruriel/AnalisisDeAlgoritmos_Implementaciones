@@ -1,11 +1,11 @@
-import insertionSort from './sortingAlgorithms/insertion_sort.js';
-import selectionSort from './sortingAlgorithms/selection_sort.js';
-import mergeSort from './sortingAlgorithms/merge_sort.js';
-import heapSort from './sortingAlgorithms/heap_sort.js';
-import quickSort from './sortingAlgorithms/quick_sort.js';
-import randomizedQuickSort from './sortingAlgorithms/randomized_quick_sort.js';
-import countingSort from './sortingAlgorithms/counting_sort.js';
-import radixSort from './sortingAlgorithms/radix_sort.js';
+import insertionSort from './s1_sortingAlgorithms/insertion_sort.js';
+import selectionSort from './s1_sortingAlgorithms/selection_sort.js';
+import mergeSort from './s1_sortingAlgorithms/merge_sort.js';
+import heapSort from './s1_sortingAlgorithms/heap_sort.js';
+import quickSort from './s1_sortingAlgorithms/quick_sort.js';
+import randomizedQuickSort from './s1_sortingAlgorithms/randomized_quick_sort.js';
+import countingSort from './s1_sortingAlgorithms/counting_sort.js';
+import radixSort from './s1_sortingAlgorithms/radix_sort.js';
 import { makeRandomList } from './randomHandling.js';
 window.makeRandomList = makeRandomList
 

@@ -4,23 +4,28 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Analisis de algoritmos</title>
+	<title>Algoritmos de ordenacion</title>
 	<link href="style.css" rel="stylesheet" type="text/css" />
-	<script src="./s1_script.js" type="module"></script>
+	<script src="./s1_sorting.js" type="module"></script>
 </head>
 
 <body>
+	<h1>Algoritmos de ordenacion</h1> 
+  <br>
   Ingresa tu lista de numeros separados por coma, o genera una lista con:
   <br>
   n = <input type="text" id="nNums" value="420" size="3" maxlength="6">
   <button onclick="makeRandomList()">Genera lista al azar</button>
+  <br>
   <br>
 	Lista de numeros a ordenar (separados por coma):
 	<textarea id="f_numeros" rows="8" cols="45" style="width: 100%">
 20,18,13,5,6,8,9,10,11,12,13,3,4,7,2,1,15,2,16</textarea>
   <strong>Selecciona algoritmo con el cual ordenar</strong>
   <div class="Opciones">
+    <!--
     <button onclick="f1()" value="test">TEST</button>
+    -->
     <button onclick="order('insSor')" value="insSort">INSERTION-SORT</button>
     <button onclick="order('selSor')" value="selSort">SELECTION-SORT</button>
     <button onclick="order('merSor')" value="merSort">MERGE-SORT</button>
