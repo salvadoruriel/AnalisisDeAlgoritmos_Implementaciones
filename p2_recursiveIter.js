@@ -18,7 +18,7 @@ const measureAndOutputTime = async (idOutAns, idOutTime, func, var1, ...rest) =>
     //document.getElementById("loading").style.display = "none";
     //TODO: Implement floating loading element
     //const time = t1 - t0;
-    const time = Number((t1 - t0).toFixed(8));
+    const time = Number((t1 - t0).toFixed(11));
     const msg = 'Este algoritmo tardo ' + time + ' millisegundos.';
     console.log(msg);
     document.getElementById(idOutTime).innerHTML = msg;
