@@ -8,6 +8,52 @@ footer{
   margin-top: 30px;
 }
 
+table, th, td{
+  border: 1px solid gray;
+  border-collapse: collapse; 
+  /*
+  */
+  width: 100%;
+  margin: 1px;
+  padding: 5px; /*padding between content and border*/
+}
+
+.toc_container{
+  background: #e7e7e7 none repeat scroll 0 0;
+  border: 1px solid #aaa;
+  display: table;
+  font-size: 95%;
+  margin-bottom: 1em;
+  padding: 10px;
+  width: auto;
+}
+.toc_title{
+  text-align: center;
+}
+.toc_container a{
+  text-decoration: none;
+  font-weight: bold;
+  color: #0645ad;
+}
+.toc_container li, .toc_container ol, .toc_container ol li{
+  margin-bottom: 5px;
+  list-style-position: inside;
+  padding: 0;
+  /* 
+  list-style: inside none none;
+  no deberia necesitar important, esta ligado a una clase
+  list-style: outside none none !important; igual creo esta mal
+  list-style: <list-style-type> || <list-style-position> || <list-style-image>;
+  type es figura,
+  position es del marcador/figura
+  image es url de imagen, lo cambia por el type
+  */
+}
+/* not aesthetic
+.toc_container ol li::marker {
+  color: -webkit-link;
+}*/
+
 .Opciones{
   display: flex;
   flex-direction: column;
@@ -41,7 +87,6 @@ footer{
   0% { -webkit-transform: rotate(0deg); }
   100% { -webkit-transform: rotate(360deg); }
 }
-
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }

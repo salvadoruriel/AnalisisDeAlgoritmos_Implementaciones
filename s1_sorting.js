@@ -7,7 +7,7 @@ import randomizedQuickSort from './s1_sortingAlgorithms/randomized_quick_sort.js
 import countingSort from './s1_sortingAlgorithms/counting_sort.js';
 import radixSort from './s1_sortingAlgorithms/radix_sort.js';
 import { makeRandomList } from './randomHandling.js';
-window.makeRandomList = makeRandomList
+window.makeRandomList = makeRandomList //make html aware of function
 
 //regarding graph visualization:
 //https://stackoverflow.com/questions/7034/graph-visualization-library-in-javascript
@@ -34,8 +34,8 @@ const actualPromise = (func, Arr, ...rest) => {
   //soporte de hasta 2 argumentos, el resto quedara en el rest.slice
   var promise = new Promise(function (resolve, reject) {
     var t0 = performance.now();
-    var isempty = (rest && rest.length > 0) ? false : true;
-    var ans = isempty ? func(Arr) : func(Arr, rest[0], rest[1], rest.slice(2));
+    var isRestEmpty = (rest && rest.length > 0) ? false : true;
+    var ans = isRestEmpty ? func(Arr) : func(Arr, rest[0], rest[1], rest.slice(2));
     var t1 = performance.now();
     //resolve([ans,t0,t1]);
     resolve({ ans, t0, t1 });
@@ -49,8 +49,11 @@ const promiseHandler = async (func, Arr, ...rest) => {
   const { ans, t0, t1 } = await actualPromise(func, Arr, ...rest);
   setTimeout(() => {
     document.getElementById("loading").style.display = "none";
-    const time = t1 - t0;
-    const msg = 'Este algoritmo tardo ' + time + ' millisegundos.'
+    //const time = t1 - t0;
+    const time = Number((t1 - t0).toFixed(8));
+    const msg = 'Este algoritmo tardo ' + time + ' millisegundos.';
+    //func doesn't retain name.
+    //const msg = 'Este algoritmo (' + func +')tardo ' + time + ' millisegundos.';
     console.log(msg);
     document.getElementById('delay').innerHTML = msg;
     document.getElementById('ans').innerHTML = ans.toString();
@@ -122,7 +125,7 @@ const order = (alg) => {
 window.order = order
 
 //para arreglos muy grandes tiene que ser manual la busqueda
-//mejor solucion comprobada en (por mi obvio): https://jsben.ch/ckr3c
+//mejor solucion comprobada(por mi obvio) en : https://jsben.ch/ckr3c
 const findMax = (Arr) => {
   var max = Arr[0];
   for(var i=1; i< Arr.length; i++){
