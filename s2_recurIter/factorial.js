@@ -5,7 +5,7 @@ export const factorial_R = (n) => {
 
 export const factorial_I = (n) => {
   var x = 1;
-  for(var i=1; i<n; i++){
+  for(var i=1; i<=n; i++){
     x = i*x;
   }
   return x;

@@ -62,10 +62,10 @@
     <tr>
       <td>
         <h4>Descripción del algoritmo</h4>
-        <p>Este algoritmo encuentra el factorial de un número n de forma recursiva.</p>
+        <p>Este algoritmo encuentra el factorial de un número n de forma recursiva. Tiene tiempo de ejecucion: \( T(n) = \Theta (n) \)</p>
 
         <h4>Pseudocódigo</h4>
-        <img src="./i2_recurIter/factorial_r.png" style="width:100%">
+        <img src="./i2_recurIter/factorial_r.png" style="width:80%">
         <p>Fragmento de (Erickson, 2019), algoritmo similar a visto en clase (Rubio, 2020).</p>
 
         <h4>Fuente bibliográfica</h4>
@@ -82,61 +82,45 @@
         <br>
         <br>
         <b>Salida:</b>
-        <p>Resultado de \( n! \). Y tiempo de ejecucion del algoritmo, sin contar llamadas u operaciones extras en JavaScript.<p>
+        <p>Resultado de \( n! \).<br> Y tiempo de ejecucion del algoritmo, sin contar llamadas u operaciones extras en JavaScript.<p>
         \( n!=\; \)<b id="ansFact_R"></b>
         <div id="delayFact_R"></div>
       </td><!-- ******************************************************** -->
       <td>
         <h4>Descripción del algoritmo</h4>
-        <p>Este algoritmo encuentra el factorial de un número n de forma iterativa.</p>
+        <p>Este algoritmo encuentra el factorial de un número n de forma iterativa. Tiene tiempo de ejecucion: \( T(n) = \Theta (n) \)</p>
 
         <h4>Pseudocódigo</h4>
         <pre id="hello-world-code" style="display:hidden;">
-          % This quicksort algorithm is extracted from Chapter 7, Introduction to Algorithms (3rd edition)
+          % This algorithm is extracted from class
           \begin{algorithm}
-          \caption{Quicksort}
+          \caption{Fibonacci(n)}
           \begin{algorithmic}
-          \PROCEDURE{Quicksort}{$A, p, r$}
-              \IF{$p < r$} 
-                  \STATE $q = $ \CALL{Partition}{$A, p, r$}
-                  \STATE \CALL{Quicksort}{$A, p, q - 1$}
-                  \STATE \CALL{Quicksort}{$A, q + 1, r$}
-              \ENDIF
-          \ENDPROCEDURE
-          \PROCEDURE{Partition}{$A, p, r$}
-              \STATE $x = A[r]$
-              \STATE $i = p - 1$
-              \FOR{$j = p$ \TO $r - 1$}
-                  \IF{$A[j] < x$}
-                      \STATE $i = i + 1$
-                      \STATE exchange
-                      $A[i]$ with     $A[j]$
-                  \ENDIF
-                  \STATE exchange $A[i]$ with $A[r]$
-              \ENDFOR
-          \ENDPROCEDURE
+            \STATE $x = 1$
+            \FOR{$i = 1$ \TO $n$}
+              \STATE $x = i*x$
+            \ENDFOR
+            \STATE return x
           \end{algorithmic}
           \end{algorithm}
         </pre>
-        <p>Fragmento de (Erickson, 2019), algoritmo similar a visto en clase (Rubio, 2020).</p>
+        <p>Algoritmo visto en clase (Rubio, 2020), sin referencia exacta.</p>
 
         <h4>Fuente bibliográfica</h4>
-        <!--https://es.wikihow.com/citar-apuntes-de-clase-->
-        <p>Erickson, J. (2019). <em>Algorithms</em> (p.57). http://algorithms.wtf</p>
-        <p>Rubio, Christian. "Metodo maestro y algoritmos recursivos." Analisis de algoritmos, 13 Oct. 2020. Universidad Nacional Autónoma de México. Clase.</p>
+        <p>Rubio, Christian. "Continuacion de algoritmos recursivos y bucle invariante." Analisis de algoritmos, 15 Oct. 2020. Universidad Nacional Autónoma de México. Clase.</p>
 
         <h4>Implementación</h4>
         <p>Realizada en Javascript. Valores grandes de n pueden causar infinito, pero no se hace lento el proceso.</p>
         <b>Entrada:</b>
         <p>El valor \( n \) de la operacion \( n! \)</p>
-        n = <input type="text" id="nFact_R" value="5" size="2" maxlength="4"> 
-        <button onclick="runFunc('nFact_R','ansFact_R','delayFact_R','fact_R')" >Correr</button>
+        n = <input type="text" id="nFact_I" value="5" size="2" maxlength="4"> 
+        <button onclick="runFunc('nFact_I','ansFact_I','delayFact_I','fact_I')" >Correr</button>
         <br>
         <br>
         <b>Salida:</b>
-        <p>Resultado de \( n! \). Y tiempo de ejecucion del algoritmo, sin contar llamadas u operaciones extras en JavaScript.<p>
-        \( n!=\; \)<b id="ansFact_R"></b>
-        <div id="delayFact_R"></div>
+        <p>Resultado de \( n! \).<br> Y tiempo de ejecucion del algoritmo, sin contar llamadas u operaciones extras en JavaScript.<p>
+        \( n!=\; \)<b id="ansFact_I"></b>
+        <div id="delayFact_I"></div>
       </td>
     </tr>
   </table>
@@ -148,7 +132,7 @@
   <h2 id="power">Fibonacci</h2>
 
   <script>
-    pseudocode.renderElement(document.getElementById("hello-world-code"));
+    pseudocode.renderElement(document.getElementById("hello-world-code"),{lineNumber: true, lineNumberPunc: ' ', noEnd: true});
   </script>
 
 </body>
