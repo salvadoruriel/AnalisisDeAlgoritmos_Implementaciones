@@ -62,7 +62,7 @@
     <tr>
       <td>
         <h4>Descripción del algoritmo</h4>
-        <p>Este algoritmo encuentra el factorial de un número n de forma recursiva. Tiene tiempo de ejecucion: \( T(n) = \Theta (n) \)</p>
+        <p>Este algoritmo encuentra el factorial de un número \( n \) de forma recursiva. Tiene tiempo de ejecución: \( T(n) = \Theta (n) \)</p>
 
         <h4>Pseudocódigo</h4>
         <img src="./i2_recurIter/factorial_r.png" style="width:80%">
@@ -76,31 +76,31 @@
         <h4>Implementación</h4>
         <p>Realizada en Javascript. Valores grandes de n pueden causar infinito, pero no se hace lento el proceso.</p>
         <b>Entrada:</b>
-        <p>El valor \( n \) de la operacion \( n! \)</p>
+        <p>El valor \( n \) de la operacion \( n! \) <b>Nota: Los negativos no estan considerados en el algoritmo.</b></p>
         n = <input type="text" id="nFact_R" value="5" size="2" maxlength="4"> 
         <button onclick="runFunc('nFact_R','ansFact_R','delayFact_R','fact_R')" >Correr</button>
         <br>
         <br>
         <b>Salida:</b>
-        <p>Resultado de \( n! \).<br> Y tiempo de ejecucion del algoritmo, sin contar llamadas u operaciones extras en JavaScript.<p>
+        <p>Resultado de \( n! \).<br> Y tiempo de ejecución del algoritmo, sin contar llamadas u operaciones extras en JavaScript.<p>
         \( n!=\; \)<b id="ansFact_R"></b>
         <div id="delayFact_R"></div>
       </td><!-- ******************************************************** -->
       <td>
         <h4>Descripción del algoritmo</h4>
-        <p>Este algoritmo encuentra el factorial de un número n de forma iterativa. Tiene tiempo de ejecucion: \( T(n) = \Theta (n) \)</p>
+        <p>Este algoritmo encuentra el factorial de un número \( n \) de forma iterativa. Tiene tiempo de ejecución: \( T(n) = \Theta (n) \)</p>
 
         <h4>Pseudocódigo</h4>
-        <pre id="hello-world-code" style="display:hidden;">
+        <pre id="fact-code" style="display:hidden;">
           % This algorithm is extracted from class
           \begin{algorithm}
-          \caption{Fibonacci(n)}
+          \caption{Factorial(n)}
           \begin{algorithmic}
             \STATE $x = 1$
             \FOR{$i = 1$ \TO $n$}
               \STATE $x = i*x$
             \ENDFOR
-            \STATE return x
+            \RETURN x
           \end{algorithmic}
           \end{algorithm}
         </pre>
@@ -112,27 +112,160 @@
         <h4>Implementación</h4>
         <p>Realizada en Javascript. Valores grandes de n pueden causar infinito, pero no se hace lento el proceso.</p>
         <b>Entrada:</b>
-        <p>El valor \( n \) de la operacion \( n! \)</p>
+        <p>El valor \( n \) de la operacion \( n! \) <b>Nota: Los negativos no estan considerados en el algoritmo.</b></p>
         n = <input type="text" id="nFact_I" value="5" size="2" maxlength="4"> 
         <button onclick="runFunc('nFact_I','ansFact_I','delayFact_I','fact_I')" >Correr</button>
         <br>
         <br>
         <b>Salida:</b>
-        <p>Resultado de \( n! \).<br> Y tiempo de ejecucion del algoritmo, sin contar llamadas u operaciones extras en JavaScript.<p>
+        <p>Resultado de \( n! \).<br> Y tiempo de ejecución del algoritmo, sin contar llamadas u operaciones extras en JavaScript.<p>
         \( n!=\; \)<b id="ansFact_I"></b>
         <div id="delayFact_I"></div>
       </td>
     </tr>
   </table>
 
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   <h2 id="power">Potencia</h2>
+  <table align="center">
+    <tr>
+      <th><h3>Recursivo<h3></th>
+      <th><h3>Iterativo<h3></th>
+    </tr>
+    <tr>
+      <td>
+        <h4>Descripción del algoritmo</h4>
+        <p>Este algoritmo eleva un número \( a \) a la potencia \( n \) deseada de forma recursiva. Tiene tiempo de ejecución: \( T(n) = \Theta (n) \)</p>
 
+        <h4>Pseudocódigo</h4>
+        <pre id="pow_R-code" style="display:hidden;">
+          % This algorithm is extracted from class
+          \begin{algorithm}
+          \caption{Power(a,n)}
+          \begin{algorithmic}
+            \IF{$n=0$} 
+              \RETURN 1;
+            \ELSE 
+              \RETURN $a*$\CALL{Power}{$a, n$}
+            \ENDIF
+          \end{algorithmic}
+          \end{algorithm}
+        </pre>
+        <p>Algoritmo visto en clase (Rubio, 2020). Del cual no lo encontré en los libros Cormen ni Erickson, pero el algoritmo es bastante intuitivo.</p>
+
+        <h4>Fuente bibliográfica</h4>
+        <p>Rubio, Christian. "Metodo maestro y algoritmos recursivos." Analisis de algoritmos, 13 Oct. 2020. Universidad Nacional Autónoma de México. Clase.</p>
+
+        <h4>Implementación</h4>
+        <p>Realizada en Javascript. Valores grandes de n pueden causar infinito, pero no se hace lento el proceso.</p>
+        <b>Entrada:</b>
+        <p>Los valores enteros no negativos \( a \) y \(n \) de la operacion \( a^n \) <b>Nota: Valores grandes de \(n \) pueden causar error al alcanzar el maximo permitido de llamadas a funciones.</b></p>
+        a = <input type="text" id="aPow_R" value="2" size="3" maxlength="5"> 
+        n = <input type="text" id="nPow_R" value="3" size="2" maxlength="4"> 
+        <button onclick="runFunc('aPow_R','ansPow_R','delayPow_R','pow_R','nPow_R')" >Correr</button>
+        <br>
+        <br>
+        <b>Salida:</b>
+        <p>Resultado de \( a^n \).<br> Y tiempo de ejecución del algoritmo, sin extras de JavaScript.<p>
+        \( n!=\; \)<b id="ansPow_R"></b>
+        <div id="delayPow_R"></div>
+      </td><!-- ******************************************************** -->
+      <td>
+        <h4>Descripción del algoritmo</h4>
+        <p>Este algoritmo eleva un número \( a \) a la potencia \( n \) deseada de forma iterativa. Tiene tiempo de ejecución: \( T(n) = \Theta (n) \)</p>
+
+        <h4>Pseudocódigo</h4>
+        <pre id="pow_I-code" style="display:hidden;">
+          % This algorithm is created by me
+          \begin{algorithm}
+          \caption{Power-I(a,n)}
+          \begin{algorithmic}
+            \STATE $x = 1$
+            \FOR{$i = 1$ \TO $n$}
+              \STATE $x = a*x$
+            \ENDFOR
+            \RETURN x
+          \end{algorithmic}
+          \end{algorithm}
+        </pre>
+        <p>Algoritmo creado para satisfacer la comparación. Hay uno similar en (Erickson, 2019) pero no considera el 0.</p>
+
+        <h4>Fuente bibliográfica</h4>
+        <p>Erickson, J. (2019). <em>Algorithms</em> (p.43). http://algorithms.wtf</p>
+
+        <h4>Implementación</h4>
+        <p>Realizada en Javascript. Valores grandes de n pueden causar infinito, pero no se hace lento el proceso.</p>
+        <b>Entrada:</b>
+        <p>Los valores enteros no negativos \( a \) y \(n \) de la operacion \( a^n \)</p>
+        a = <input type="text" id="aPow_I" value="2" size="3" maxlength="5"> 
+        n = <input type="text" id="nPow_I" value="3" size="5" maxlength="9"> 
+        <button onclick="runFunc('aPow_I','ansPow_I','delayPow_I','pow_I','nPow_I')" >Correr</button>
+        <br>
+        <br>
+        <b>Salida:</b>
+        <p>Resultado de \( a^n \).<br> Y tiempo de ejecución del algoritmo, sin extras de JavaScript.<p>
+        \( n!=\; \)<b id="ansPow_I"></b>
+        <div id="delayPow_I"></div>
+      </td>
+    </tr>
+  </table>
+
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   <h2 id="power">Busqueda binaria</h2>
+  <table align="center">
+    <tr>
+      <th><h3>Recursivo<h3></th>
+      <th><h3>Iterativo<h3></th>
+    </tr>
+    <tr>
+      <td>
+        <h4>Descripción del algoritmo</h4>
+        <p>Este algoritmo</p>
 
+        <h4>Pseudocódigo</h4>
+        <pre id="pow_R-code" style="display:hidden;">
+          % This algorithm is extracted from class
+          \begin{algorithm}
+          \caption{Power(n)}
+          \begin{algorithmic}
+            \IF{$n=0$} 
+              \STATE return 1;
+            \ELSE \RETURN $a*power(a,n1)$
+            \ENDIF
+          \end{algorithmic}
+          \end{algorithm}
+        </pre>
+        <p>Algoritmo visto en </p>
+
+        <h4>Fuente bibliográfica</h4>
+        <p></p>
+
+        <h4>Implementación</h4>
+        <p>Realizada en Javascript. Valores grandes </p>
+        <b>Entrada:</b>
+        <p>El valor \( n \) de la operacion \( n! \) <b>Nota:</b></p>
+        n = <input type="text" id="nFact_R" value="5" size="2" maxlength="4"> 
+        <button onclick="runFunc('nFact_R','ansFact_R','delayFact_R','fact_R')" >Correr</button>
+        <br>
+        <br>
+        <b>Salida:</b>
+        <p>Resultado de \( n! \).<br> Y tiempo de ejecución del algoritmo, sin contar llamadas u operaciones extras en JavaScript.<p>
+        \( n!=\; \)<b id="ansFact_R"></b>
+        <div id="delayFact_R"></div>
+      </td><!-- ******************************************************** -->
+      <td>
+      </td>
+    </tr>
+  </table>
+
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   <h2 id="power">Fibonacci</h2>
 
   <script>
-    pseudocode.renderElement(document.getElementById("hello-world-code"),{lineNumber: true, lineNumberPunc: ' ', noEnd: true});
+    var codes = ['fact-code','pow_R-code','pow_I-code'];
+    for(cod of codes){
+      pseudocode.renderElement(document.getElementById( cod),{lineNumber: true, lineNumberPunc: ' ', noEnd: true});
+    }
   </script>
 
 </body>
