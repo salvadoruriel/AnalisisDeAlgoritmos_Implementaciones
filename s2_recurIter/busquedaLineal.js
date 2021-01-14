@@ -1,5 +1,4 @@
 export const busqueda_lineal_R = (x, i, j, Arr) => {
-  //console.log(i, Arr[i], x)
   if (Arr[i] == x)
     return i;
   else if (i == j)

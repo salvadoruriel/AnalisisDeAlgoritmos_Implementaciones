@@ -12,9 +12,7 @@ const actualPromise = (func, val1, ...rest) => {
       ans = func(val1);
     } else if (rest.length <= 2) {
       ans = func(val1, rest[0], rest.slice(1));
-    } else {
-      //the searches, {x,i,j,Arr}
-      //console.log(val1,rest[2])
+    } else {//the searches, {x,i,j,Arr}
       ans = func(val1, rest[0], rest[1], rest[2]);
     }
     var t1 = performance.now();
@@ -31,10 +29,7 @@ const measureAndOutputTime = async (idOutAns, idOutTime, func, val1, ...rest) =>
     const msg = 'Este algoritmo tardo ' + time + ' millisegundos.';
     console.log(msg);
     document.getElementById(idOutTime).innerHTML = msg;
-    if(!ans && ans !== 0){
-      //console.log(ans)
-      document.getElementById(idOutAns).innerHTML = 'nulo';
-    }
+    if (!ans && ans !== 0) document.getElementById(idOutAns).innerHTML = 'nulo';
     else document.getElementById(idOutAns).innerHTML = ans.toString();
   }, 0);
   return 1;
