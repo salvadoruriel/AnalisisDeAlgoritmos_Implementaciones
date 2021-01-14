@@ -41,11 +41,13 @@
 	<h1>Algoritmos recursivos e iterativos</h1>
   <br>
   <p>Aquí se encuentran algoritmos que pueden completar una tarea de forma recursiva o iterativa. En ciertas ocasiones una solución es mejor que otra, a veces son iguales. Lo importante es identificar el método que mejor sirve para un problema.</p>
+  <p>Para los algoritmos que requieren una lista de números pueden copiarse y pegarse listas mas grandes generadas en <a href='../p1_sorting.html'>Algoritmos de ordenacion</a>, solo considere si el algoritmo requiere una lista <b>ordenada</b> o no, pero de preferencia use la lista ordenada.</p>
   <div class="toc_container">
     <h2 class="toc_title">Indice</h2>
     <ol class="toc">
       <li><a href="#fact">Factorial</a></li>
       <li><a href="#power">Potencia</a></li>
+      <li><a href="#lineal">Busqueda lineal</a></li>
       <li><a href="#binary">Busqueda binaria</a></li>
       <li><a href="#fibonacci">Fibonacci</a></li>
     </ol>
@@ -157,7 +159,7 @@
         <p>Rubio, Christian. "Metodo maestro y algoritmos recursivos." Analisis de algoritmos, 13 Oct. 2020. Universidad Nacional Autónoma de México. Clase.</p>
 
         <h4>Implementación</h4>
-        <p>Realizada en Javascript. Valores grandes de n pueden causar infinito, pero no se hace lento el proceso.</p>
+        <p>Realizada en Javascript.</p>
         <b>Entrada:</b>
         <p>Los valores enteros no negativos \( a \) y \(n \) de la operacion \( a^n \) <b>Nota: Valores grandes de \(n \) pueden causar error al alcanzar el maximo permitido de llamadas a funciones.</b></p>
         a = <input type="text" id="aPow_R" value="2" size="3" maxlength="5"> 
@@ -194,7 +196,7 @@
         <p>Erickson, J. (2019). <em>Algorithms</em> (p.43). http://algorithms.wtf</p>
 
         <h4>Implementación</h4>
-        <p>Realizada en Javascript. Valores grandes de n pueden causar infinito, pero no se hace lento el proceso.</p>
+        <p>Realizada en Javascript.</p>
         <b>Entrada:</b>
         <p>Los valores enteros no negativos \( a \) y \(n \) de la operacion \( a^n \)</p>
         a = <input type="text" id="aPow_I" value="2" size="3" maxlength="5"> 
@@ -209,9 +211,60 @@
       </td>
     </tr>
   </table>
+  
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  <h2 id="lineal">Busqueda lineal</h2>
+  <table align="center">
+    <tr>
+      <th><h3>Recursivo<h3></th>
+      <th><h3>Iterativo<h3></th>
+    </tr>
+    <tr>
+      <td>
+        <h4>Descripción del algoritmo</h4>
+        <p>Este algoritmo busca linealmente un valor en un arreglo de números de forma recursiva. Tiene tiempo de ejecución: \( T(n) = \Theta (n) \)</p>
+        <h4>Pseudocódigo</h4>
+        <pre id="lin_R-code" style="display:hidden;">
+          % This algorithm is extracted from class
+          \begin{algorithm}
+          \caption{Busqueda-Lineal-R(i,j,x)}
+          \begin{algorithmic}
+            \IF{$a_i=x$} 
+              \RETURN $i$;
+            \ELSEIF{$i=j$} 
+              \RETURN $\varnothing$
+            \ELSE
+              \RETURN \CALL{Busqueda-Lineal-R}{$i+1,j,x$}
+            \ENDIF
+          \end{algorithmic}
+          \end{algorithm}
+        </pre>
+        <p>Algoritmo visto en clase (Rubio, 2020).</p>
+
+        <h4>Fuente bibliográfica</h4>
+        <p>Rubio, Christian. "Metodo maestro y algoritmos recursivos." Analisis de algoritmos, 13 Oct. 2020. Universidad Nacional Autónoma de México. Clase.</p>
+
+        <h4>Implementación</h4>
+        <p>Realizada en Javascript. Solo cambie el orden de x al inicio y agregue el paso del arreglo para facilitar la implementacion.</p>
+        <b>Entrada:</b>
+        <p>El valor \( x \) buscado en la lista de números "\( Arr \)" (separados por coma). <b>Nota: El arreglo no necesita estar en orden. Arreglos muy grandes pueden causar error al hacer busquedas muy extensas que superan el limite de hacer recursion.</b></p>
+        x = <input type="text" id="xLineal_R" value="3" size="4" maxlength="9"> Arr=
+        <textarea id="arrLineal_R" rows="3" cols="33" style="width: 100%">33,44,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32</textarea>
+        <button onclick="runFunc('xLineal_R','ansLineal_R','delayLineal_R','lineal_R',toArr('arrLineal_R'))" >Correr</button>
+        <br>
+        <br>
+        <b>Salida:</b>
+        <p>Primer indice \( i \) (o posicion en el arreglo) donde se encontró el valor buscado, <b>iniciando desde 0</b>, <em>valor nulo significa que no esta el número en el arreglo</em>.<br> Y tiempo de ejecución del algoritmo, sin contar llamadas u operaciones extras en JavaScript.<p>
+        \( i=\; \)<b id="ansLineal_R"></b>
+        <div id="delayLineal_R"></div>
+      </td><!-- ******************************************************** -->
+      <td>
+      </td>
+    </tr>
+  </table>
 
   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-  <h2 id="power">Busqueda binaria</h2>
+  <h2 id="binary">Busqueda binaria</h2>
   <table align="center">
     <tr>
       <th><h3>Recursivo<h3></th>
@@ -259,10 +312,10 @@
   </table>
 
   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-  <h2 id="power">Fibonacci</h2>
+  <h2 id="fibonacci">Fibonacci</h2>
 
   <script>
-    var codes = ['fact-code','pow_R-code','pow_I-code'];
+    var codes = ['fact-code','pow_R-code','pow_I-code','lin_R-code'];
     for(cod of codes){
       pseudocode.renderElement(document.getElementById( cod),{lineNumber: true, lineNumberPunc: ' ', noEnd: true});
     }

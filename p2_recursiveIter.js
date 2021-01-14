@@ -1,12 +1,22 @@
 import { factorial_R, factorial_I } from './s2_recurIter/factorial.js';
 import { power_R, power_I } from './s2_recurIter/power.js';
+import { busqueda_lineal_R, busqueda_lineal_I } from './s2_recurIter/busquedaLineal.js';
 
 //explicacion en s1_sorting.js //slight changes to be more generic
 const actualPromise = (func, val1, ...rest) => {
   var promise = new Promise(function (resolve, reject) {
     var t0 = performance.now();
     var isRestEmpty = (rest && rest.length > 0) ? false : true;
-    var ans = isRestEmpty ? func(val1) : func(val1, rest[0], rest.slice(1));
+    var ans;
+    if (isRestEmpty) {
+      ans = func(val1);
+    } else if (rest.length <= 2) {
+      ans = func(val1, rest[0], rest.slice(1));
+    } else {
+      //the searches, {x,i,j,Arr}
+      //console.log(val1,rest[2])
+      ans = func(val1, rest[0], rest[1], rest[2]);
+    }
     var t1 = performance.now();
     resolve({ ans, t0, t1 });
   });
@@ -21,27 +31,24 @@ const measureAndOutputTime = async (idOutAns, idOutTime, func, val1, ...rest) =>
     const msg = 'Este algoritmo tardo ' + time + ' millisegundos.';
     console.log(msg);
     document.getElementById(idOutTime).innerHTML = msg;
-    document.getElementById(idOutAns).innerHTML = ans.toString();
+    if(!ans && ans !== 0){
+      //console.log(ans)
+      document.getElementById(idOutAns).innerHTML = 'nulo';
+    }
+    else document.getElementById(idOutAns).innerHTML = ans.toString();
   }, 0);
   return 1;
 }
 
+const toArr = (idArr) => {
+  var text = document.getElementById(idArr).value.split(',');
+  var Arr = text.map((txt) => parseInt(txt, 10));
+  return Arr;
+}
+window.toArr = toArr
+
 const runFunc = (idEntry, idOutAns, idOutTime, func, ...rest) => {
   //preparing elements of function to just measure it
-  switch (func) { //dirty but avoids exposing to html and cluttering stuff.
-    case 'fact_R': func = factorial_R;
-      break;
-    case 'fact_I': func = factorial_I;
-      break;
-    case 'pow_R': func = power_R;
-      break;
-    case 'pow_I': func = power_I;
-      break;
-    default:
-      console.log("Error:" + func);
-      return;
-  }
-
   if (typeof idEntry != "string") {
     console.log("idEntry no es string, es de tipo: " + typeof idEntry);
     return;
@@ -55,15 +62,45 @@ const runFunc = (idEntry, idOutAns, idOutTime, func, ...rest) => {
     return;
   }
   //document.getElementById("loading").style.display = "block";
+  var needsArray = false;
+  switch (func) { //dirty but avoids exposing to html and cluttering stuff.
+    case 'fact_R': func = factorial_R;
+      break;
+    case 'fact_I': func = factorial_I;
+      break;
+    case 'pow_R': func = power_R;
+      break;
+    case 'pow_I': func = power_I;
+      break;
+    case 'lineal_R': func = busqueda_lineal_R;
+      needsArray = true;
+      break;
+    case 'lineal_I': func = busqueda_lineal_I;
+      needsArray = true;
+      break;
+    case 'binary_R': func = busqueda_binaria_R;
+      needsArray = true;
+      break;
+    case 'binary_I': func = busqueda_binaria_I;
+      needsArray = true;
+      break;
+    default:
+      console.log("Error:" + func);
+      return;
+  }
 
   var val1 = parseInt(document.getElementById(idEntry).value, 10);
   //getting extra elementId values or just running
-  if (rest && rest.length > 0) {//rest is not empty
+  if (needsArray) {
+    var valArr = rest[0];
+    measureAndOutputTime(idOutAns, idOutTime, func, val1, 0, valArr.length - 1, valArr);
+  }
+  else if (rest && rest.length > 0) {//rest is not empty
     var val2 = parseInt(document.getElementById(rest[0]).value, 10);
     measureAndOutputTime(idOutAns, idOutTime, func, val1, val2, rest.slice(1));
   }
   else measureAndOutputTime(idOutAns, idOutTime, func, val1, ...rest);
-  
+
   document.getElementById(idOutAns).innerHTML = 'Si este mensaje dura más de 3 segundos entonces hubo un ¡Error! Checar consola.';
 }
 window.runFunc = runFunc

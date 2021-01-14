@@ -65,6 +65,7 @@ const promiseHandler = async (func, Arr, ...rest) => {
 
 const order = (alg) => {
   document.getElementById("loading").style.display = "block";
+  //se obtiene lista de numeros pero como arreglo de textos
   var text = document.getElementById('f_numeros').value.split(',');
   /*
   var t0 = performance.now();
