@@ -9,6 +9,17 @@ export const busqueda_binaria_R = (x, i, j, Arr) => {
     return busqueda_binaria_R(x, m + 1, j, Arr);
   return null;
 }
+
 export const busqueda_binaria_I = (x, i, j, Arr) => {
+  while (i <= j) {
+    var mitad = Math.floor((i + j) / 2);
+    //console.log(x,i,j,mitad,Arr[mitad]);
+    if (x == Arr[mitad])
+      return mitad;
+    if (x > Arr[mitad])
+      i = mitad + 1;
+    else
+      j = mitad - 1;
+  }
   return null;
 }
