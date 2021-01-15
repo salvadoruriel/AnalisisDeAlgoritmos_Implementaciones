@@ -1,6 +1,7 @@
 import { factorial_R, factorial_I } from './s2_recurIter/factorial.js';
 import { power_R, power_I } from './s2_recurIter/power.js';
 import { busqueda_lineal_R, busqueda_lineal_I } from './s2_recurIter/busquedaLineal.js';
+import { busqueda_binaria_R, busqueda_binaria_I } from './s2_recurIter/busquedaBinaria.js';
 
 //explicacion en s1_sorting.js //slight changes to be more generic
 const actualPromise = (func, val1, ...rest) => {
@@ -29,6 +30,7 @@ const measureAndOutputTime = async (idOutAns, idOutTime, func, val1, ...rest) =>
     const msg = 'Este algoritmo tardo ' + time + ' millisegundos.';
     console.log(msg);
     document.getElementById(idOutTime).innerHTML = msg;
+    //https://stackoverflow.com/questions/6003884/how-do-i-check-for-null-values-in-javascript
     if (!ans && ans !== 0) document.getElementById(idOutAns).innerHTML = 'nulo';
     else document.getElementById(idOutAns).innerHTML = ans.toString();
   }, 0);

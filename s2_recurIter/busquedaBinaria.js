@@ -4,9 +4,9 @@ export const busqueda_binaria_R = (x, i, j, Arr) => {
   if (x == Arr[m])
     return m;
   else if (x < Arr[m] && i < m)
-    return busqueda_binaria_R(x, i, m - 1);
+    return busqueda_binaria_R(x, i, m - 1, Arr);
   else if (x > Arr[m] && j > m)
-    return busqueda_binaria_R(x, m + 1, j);
+    return busqueda_binaria_R(x, m + 1, j, Arr);
   return null;
 }
 export const busqueda_binaria_I = (x, i, j, Arr) => {

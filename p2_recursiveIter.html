@@ -98,9 +98,9 @@
           \begin{algorithm}
           \caption{Factorial(n)}
           \begin{algorithmic}
-            \STATE $x = 1$
-            \FOR{$i = 1$ \TO $n$}
-              \STATE $x = i*x$
+            \STATE $x \leftarrow 1$
+            \FOR{$i \gets 1$ \TO $n$}
+              \STATE $x \leftarrow i*x$
             \ENDFOR
             \RETURN x
           \end{algorithmic}
@@ -182,9 +182,9 @@
           \begin{algorithm}
           \caption{Power-I(a,n)}
           \begin{algorithmic}
-            \STATE $x = 1$
-            \FOR{$i = 1$ \TO $n$}
-              \STATE $x = a*x$
+            \STATE $x \leftarrow 1$
+            \FOR{$i \gets 1$ \TO $n$}
+              \STATE $x \leftarrow a*x$
             \ENDFOR
             \RETURN x
           \end{algorithmic}
@@ -230,7 +230,7 @@
           \caption{Busqueda-Lineal-R(i,j,x)}
           \begin{algorithmic}
             \IF{$a_i=x$} 
-              \RETURN $i$;
+              \RETURN $i$
             \ELSEIF{$i=j$} 
               \RETURN $\varnothing$
             \ELSE
@@ -245,7 +245,7 @@
         <p>Rubio, Christian. "Metodo maestro y algoritmos recursivos." Analisis de algoritmos, 13 Oct. 2020. Universidad Nacional Autónoma de México. Clase.</p>
 
         <h4>Implementación</h4>
-        <p>Realizada en Javascript. Solo cambie el orden de x al inicio y agregue el paso del arreglo para facilitar la implementacion.</p>
+        <p>Realizada en Javascript. Agregue el arreglo como argumento para facilitar la implementación, aprovechando que en javascript esto se realiza constante como referencia (o más bien paso por "sharing").</p>
         <b>Entrada:</b>
         <p>El valor \( x \) buscado en la lista de números "\( Arr \)" (separados por coma). <b>Nota: El arreglo no necesita estar en orden. Arreglos muy grandes pueden causar error al hacer busquedas muy extensas que superan el limite de hacer recursion.</b></p>
         x = <input type="text" id="xLineal_R" value="3" size="4" maxlength="9"> Arr=
@@ -259,6 +259,41 @@
         <div id="delayLineal_R"></div>
       </td><!-- ******************************************************** -->
       <td>
+        <h4>Descripción del algoritmo</h4>
+        <p>Este algoritmo busca linealmente un valor en un arreglo de números de forma iterativa. Tiene tiempo de ejecución: \( T(n) = \Theta (n) \)</p>
+        <h4>Pseudocódigo</h4>
+        <pre id="lin_I-code" style="display:hidden;">
+          % This algorithm is mine
+          \begin{algorithm}
+          \caption{Busqueda-Lineal-I(x,i,j,a)}
+          \begin{algorithmic}
+            \FOR{$i$ \TO $j$}
+              \IF{$a_i = x$}
+                \RETURN $i$
+              \ENDIF
+            \ENDFOR
+            \RETURN $\varnothing$
+          \end{algorithmic}
+          \end{algorithm}
+        </pre>
+        <p>Algoritmo creado para satisfacer la comparación. No hay otro similar en estas fuentes formales, pero es bastante intuitivo. Incluye \( a \) como el arreglo, siendo este pasado como referencia o valor similar que tiene tiempo constante. </p>
+
+        <h4>Fuente bibliográfica</h4>
+        <p>Aguirre, Salvador (Autor).</p>
+
+        <h4>Implementación</h4>
+        <p>Realizada en Javascript.</p>
+        <b>Entrada:</b>
+        <p>El valor \( x \) buscado en la lista de números "\( Arr \)" (separados por coma). <b>Nota: El arreglo no necesita estar en orden.</b></p>
+        x = <input type="text" id="xLineal_I" value="3" size="4" maxlength="9"> Arr=
+        <textarea id="arrLineal_I" rows="3" cols="33" style="width: 100%">33,44,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32</textarea>
+        <button onclick="runFunc('xLineal_I','ansLineal_I','delayLineal_I','lineal_I',toArr('arrLineal_I'))" >Correr</button>
+        <br>
+        <br>
+        <b>Salida:</b>
+        <p>Primer indice \( i \) (o posicion en el arreglo) donde se encontró el valor buscado, <b>iniciando desde 0</b>, <em>valor nulo significa que no esta el número en el arreglo</em>.<br> Y tiempo de ejecución del algoritmo, sin contar llamadas u operaciones extras en JavaScript.<p>
+        \( i=\; \)<b id="ansLineal_I"></b>
+        <div id="delayLineal_I"></div>
       </td>
     </tr>
   </table>
@@ -273,38 +308,45 @@
     <tr>
       <td>
         <h4>Descripción del algoritmo</h4>
-        <p>Este algoritmo</p>
+        <p>Este algoritmo busca un valor en un arreglo de números acortando el rango en el que esta el valor de forma recursiva. Tiene tiempo de ejecución: \( T(n) =\Theta (\lg n) \)</p>
 
         <h4>Pseudocódigo</h4>
-        <pre id="pow_R-code" style="display:hidden;">
+        <pre id="bin_R-code" style="display:hidden;">
           % This algorithm is extracted from class
           \begin{algorithm}
-          \caption{Power(n)}
+          \caption{Busqueda-Binaria-R(x,i,j)}
           \begin{algorithmic}
-            \IF{$n=0$} 
-              \STATE return 1;
-            \ELSE \RETURN $a*power(a,n1)$
+            \STATE $m \gets \lceil \frac{i+j-1}{2} \rceil$
+            \IF{$x=a_m$} 
+              \RETURN m;
+            \ELSEIF{$x < a_m$ \AND $i < m$} 
+              \RETURN \CALL{Busqueda-Binaria-R}{$x, i, m-1$}
+            \ELSEIF{$x > a_m$ \AND $j > m$}
+              \RETURN \CALL{Busqueda-Binaria-R}{$x, m+1, j$}
+            \ELSE
+              \RETURN $\varnothing$
             \ENDIF
           \end{algorithmic}
           \end{algorithm}
         </pre>
-        <p>Algoritmo visto en </p>
+        <p>Algoritmo visto en clase (Rubio, 2020).</p>
 
         <h4>Fuente bibliográfica</h4>
-        <p></p>
+        <p>Rubio, Christian. "Continuacion de algoritmos recursivos y bucle invariante." Analisis de algoritmos, 15 Oct. 2020. Universidad Nacional Autónoma de México. Clase.</p>
 
         <h4>Implementación</h4>
-        <p>Realizada en Javascript. Valores grandes </p>
+        <p>Realizada en Javascript. Agregue el arreglo como argumento para facilitar la implementación, aprovechando que en javascript esto se realiza constante como referencia (o más bien paso por "sharing").</p>
         <b>Entrada:</b>
-        <p>El valor \( n \) de la operacion \( n! \) <b>Nota:</b></p>
-        n = <input type="text" id="nFact_R" value="5" size="2" maxlength="4"> 
-        <button onclick="runFunc('nFact_R','ansFact_R','delayFact_R','fact_R')" >Correr</button>
+        <p>El valor \( x \) buscado en la lista de números "\( Arr \)" (separados por coma). <b>Nota: El arreglo DEBE estar en orden.</b></p>
+        x = <input type="text" id="xBinaria_R" value="3" size="4" maxlength="9"> Arr=
+        <textarea id="arrBinaria_R" rows="3" cols="33" style="width: 100%">1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,44</textarea>
+        <button onclick="runFunc('xBinaria_R','ansBinaria_R','delayBinaria_R','binary_R',toArr('arrBinaria_R'))" >Correr</button>
         <br>
         <br>
         <b>Salida:</b>
-        <p>Resultado de \( n! \).<br> Y tiempo de ejecución del algoritmo, sin contar llamadas u operaciones extras en JavaScript.<p>
-        \( n!=\; \)<b id="ansFact_R"></b>
-        <div id="delayFact_R"></div>
+        <p>Primer indice \( i \) (o posicion en el arreglo) donde se encontró el valor buscado, <b>iniciando desde 0</b>, <em>valor nulo significa que no esta el número en el arreglo</em>.<br> Y tiempo de ejecución del algoritmo, sin contar llamadas u operaciones extras en JavaScript.<p>
+        \( i=\; \)<b id="ansBinaria_R"></b>
+        <div id="delayBinaria_R"></div>
       </td><!-- ******************************************************** -->
       <td>
       </td>
@@ -315,7 +357,7 @@
   <h2 id="fibonacci">Fibonacci</h2>
 
   <script>
-    var codes = ['fact-code','pow_R-code','pow_I-code','lin_R-code'];
+    var codes = ['fact-code','pow_R-code','pow_I-code','lin_R-code','lin_I-code','bin_R-code'];
     for(cod of codes){
       pseudocode.renderElement(document.getElementById( cod),{lineNumber: true, lineNumberPunc: ' ', noEnd: true});
     }
