@@ -12,8 +12,8 @@
     }
   </style>
 	<script src="./p2_recursiveIter.js" type="module"></script>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script id="MathJax-script" async
           src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
   </script>
@@ -43,17 +43,18 @@
   <p>Aquí se encuentran algoritmos que pueden completar una tarea de forma recursiva o iterativa. En ciertas ocasiones una solución es mejor que otra, a veces son iguales. Lo importante es identificar el método que mejor sirve para un problema.</p>
   <p>Para los algoritmos que requieren una lista de números pueden copiarse y pegarse listas mas grandes generadas en <a href='../p1_sorting.html'>Algoritmos de ordenacion</a>, solo considere si el algoritmo requiere una lista <b>ordenada</b> o no, pero de preferencia use la lista ordenada.</p>
   <div class="toc_container">
-    <h2 class="toc_title">Indice</h2>
+    <h2 class="toc_title">Índice</h2>
     <ol class="toc">
       <li><a href="#fact">Factorial</a></li>
       <li><a href="#power">Potencia</a></li>
+      <li><a href="#fibonacci">Fibonacci</a></li>
       <li><a href="#lineal">Busqueda lineal</a></li>
       <li><a href="#binary">Busqueda binaria</a></li>
-      <li><a href="#fibonacci">Fibonacci</a></li>
     </ol>
   </div>
 	<br>
 
+  <div class="divSeparator"></div>
   <h2 id="fact">Factorial</h2>
   <!--<p style="margin-bottom: 999px;">Probando enlace insite-->
   <table align="center">
@@ -128,6 +129,7 @@
   </table>
 
   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  <div class="divSeparator"></div>
   <h2 id="power">Potencia</h2>
   <table align="center">
     <tr>
@@ -211,8 +213,104 @@
       </td>
     </tr>
   </table>
+
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  <div class="divSeparator"></div>
+  <h2 id="fibonacci">Fibonacci</h2>
+  <table align="center">
+    <tr>
+      <th><h3>Recursivo<h3></th>
+      <th><h3>Iterativo<h3></th>
+    </tr>
+    <tr>
+      <td>
+        <h4>Descripción del algoritmo</h4>
+        <p>Busca el \( n \)-esimo número Fibonacci ( \( F_n \) ) de forma recusiva. Tiene tiempo de ejecución: \( T(n) = O(1.62^n) \)</p>
+
+        <h4>Pseudocódigo</h4>
+        <pre id="fib_R-code" style="display:hidden;">
+          % This algorithm is extracted from class
+          \begin{algorithm}
+          \caption{Fibonacci-R(n)}
+          \begin{algorithmic}
+            \IF{$n=0$} 
+              \RETURN 0
+            \ELSEIF{$n=1$}
+              \RETURN 1
+            \ELSE 
+              \STATE $x \gets$ \CALL{Fibonacci-R}{$n-1$}
+              \STATE $y \gets$ \CALL{Fibonacci-R}{$n-2$}
+              \RETURN $x+y$
+            \ENDIF
+          \end{algorithmic}
+          \end{algorithm}
+        </pre>
+        <p>Algoritmo visto en clase (Rubio, 2020).</p>
+
+        <h4>Fuente bibliográfica</h4>
+        <p>Rubio, Christian. "Continuacion de algoritmos recursivos y bucle invariante." Analisis de algoritmos, 15 Oct. 2020. Universidad Nacional Autónoma de México. Clase.</p>
+
+        <h4>Implementación</h4>
+        <p>Realizada en Javascript.</p>
+        <b>Entrada:</b>
+        <p>El \(n \)-esimo número de la <a href='https://web.archive.org/web/20201127014011/https://es.wikipedia.org/wiki/Sucesi%C3%B3n_de_Fibonacci'>serie fibonacci</a> a buscar. <b>Nota: Valores de \(n \) mayores a 40 son lentos, avance de 1 en 1 a partir de este valor, mas alla pueden congelar y causar errores.</b></p>
+        n = <input type="text" id="nFib_R" value="8" size="1" maxlength="2"> 
+        <button onclick="runFunc('nFib_R','ansFib_R','delayFib_R','fib_R')" >Correr</button>
+        <br>
+        <br>
+        <b>Salida:</b>
+        <p>El \( n \)-esimo número fibonacci.<br> Y tiempo de ejecución del algoritmo, sin extras de JavaScript.<p>
+        \( F_n =\; \)<b id="ansFib_R"></b>
+        <div id="delayFib_R"></div>
+      </td><!-- ******************************************************** -->
+      <td>
+        <h4>Descripción del algoritmo</h4>
+        <p>Busca el \( n \)-esimo número Fibonacci ( \( F_n \) ) de forma iterativa (en sí cuenta como programacion dinamica). Tiene tiempo de ejecución: \( T(n) = \Theta (n) \)</p>
+
+        <h4>Pseudocódigo</h4>
+        <pre id="fib_I-code" style="display:hidden;">
+          % This algorithm is extracted from class
+          \begin{algorithm}
+          \caption{Fibonacci-I(n)}
+          \begin{algorithmic}
+            \IF{$n=0$} 
+              \RETURN 0
+            \ELSE 
+              \STATE $x \gets 0$ 
+              \STATE $y \gets 1$
+              \FOR{$i \gets 1$ \TO $n-1$}
+                \STATE $z \gets x+y$
+                \STATE $x \gets y$
+                \STATE $y \gets z$
+              \ENDFOR
+              \RETURN $y$
+            \ENDIF
+          \end{algorithmic}
+          \end{algorithm}
+        </pre>
+        <p>Algoritmo visto en clase (Rubio, 2020), ligera adaptacion para visualizarse mejor en libreria de pseudocódigo.</p>
+
+        <h4>Fuente bibliográfica</h4>
+        <p>Rubio, Christian. "Continuacion de algoritmos recursivos y bucle invariante." Analisis de algoritmos, 15 Oct. 2020. Universidad Nacional Autónoma de México. Clase.</p>
+
+        <h4>Implementación</h4>
+        <p>Realizada en Javascript.</p>
+        <b>Entrada:</b>
+        <p>El \(n \)-esimo número de la <a href='https://web.archive.org/web/20201127014011/https://es.wikipedia.org/wiki/Sucesi%C3%B3n_de_Fibonacci'>serie fibonacci</a> a buscar. <b>Nota: Valores muy grandes de \(n \) marcan infinito.</b></p>
+        n = <input type="text" id="nFib_I" value="8" size="2" maxlength="4"> 
+        <button onclick="runFunc('nFib_I','ansFib_I','delayFib_I','fib_I')" >Correr</button>
+        <br>
+        <br>
+        <b>Salida:</b>
+        <p>El \( n \)-esimo número fibonacci.<br> Y tiempo de ejecución del algoritmo, sin extras de JavaScript.<p>
+        \( F_n =\; \)<b id="ansFib_I"></b>
+        <div id="delayFib_I"></div>
+      </td>
+    </tr>
+  </table>
   
   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  <div class="divSeparator"></div>
   <h2 id="lineal">Busqueda lineal</h2>
   <table align="center">
     <tr>
@@ -299,6 +397,7 @@
   </table>
 
   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  <div class="divSeparator"></div>
   <h2 id="binary">Busqueda binaria</h2>
   <table align="center">
     <tr>
@@ -395,11 +494,8 @@
     </tr>
   </table>
 
-  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-  <h2 id="fibonacci">Fibonacci</h2>
-
   <script>
-    var codes = ['fact-code','pow_R-code','pow_I-code','lin_R-code','lin_I-code','bin_R-code','bin_I-code'];
+    var codes = ['fact-code','pow_R-code','pow_I-code','fib_R-code','fib_I-code','lin_R-code','lin_I-code','bin_R-code','bin_I-code'];
     for(cod of codes){
       pseudocode.renderElement(document.getElementById( cod),{lineNumber: true, lineNumberPunc: ' ', noEnd: true});
     }
@@ -408,7 +504,7 @@
 </body>
 
 <footer>
-	Hecho por salvador
+	Hecho por Salvador
 </footer>
 
 </html>

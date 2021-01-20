@@ -8,6 +8,24 @@ footer{
   margin-top: 30px;
 }
 
+a{ /*same as .toc container, separated for future changes*/
+  text-decoration: none;
+  font-weight: bold;
+  color: #0645ad;
+}
+
+ol{ /*separate rules to allow sub-indexing*/
+  counter-reset: item;
+  padding-left: 10px;
+}
+li{
+  display: block;
+}
+li::before{
+  content: counters(item, ".") " ";
+  counter-increment: item;
+}
+
 table, th, td{
   border: 1px solid gray;
   border-collapse: collapse; 
@@ -16,6 +34,13 @@ table, th, td{
   width: 100%;
   margin: 1px;
   padding: 5px; /*padding between content and border*/
+}
+
+.divSeparator {
+  border-top: 1px solid #147c80;
+  border-bottom: 1px solid #147c80;
+  height: 1px;
+  margin: 16px 0;
 }
 
 .toc_container{
@@ -38,8 +63,8 @@ table, th, td{
 .toc_container li, .toc_container ol, .toc_container ol li{
   margin-bottom: 5px;
   list-style-position: inside;
-  padding: 0;
   /* 
+  padding: 0;
   list-style: inside none none;
   no deberia necesitar important, esta ligado a una clase
   list-style: outside none none !important; igual creo esta mal

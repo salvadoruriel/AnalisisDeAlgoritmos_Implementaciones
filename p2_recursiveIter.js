@@ -1,5 +1,6 @@
 import { factorial_R, factorial_I } from './s2_recurIter/factorial.js';
 import { power_R, power_I } from './s2_recurIter/power.js';
+import { fibonacci_R, fibonacci_I } from './s2_recurIter/fibonacci.js';
 import { busqueda_lineal_R, busqueda_lineal_I } from './s2_recurIter/busquedaLineal.js';
 import { busqueda_binaria_R, busqueda_binaria_I } from './s2_recurIter/busquedaBinaria.js';
 
@@ -27,7 +28,7 @@ const measureAndOutputTime = async (idOutAns, idOutTime, func, val1, ...rest) =>
     //document.getElementById("loading").style.display = "none";
     //TODO: Implement floating loading element
     const time = Number((t1 - t0).toFixed(11));
-    const msg = 'Este algoritmo tardo ' + time + ' millisegundos.';
+    const msg = 'Este algoritmo tardo ' + time + ' milisegundos.';
     console.log(msg);
     document.getElementById(idOutTime).innerHTML = msg;
     //https://stackoverflow.com/questions/6003884/how-do-i-check-for-null-values-in-javascript
@@ -68,6 +69,10 @@ const runFunc = (idEntry, idOutAns, idOutTime, func, ...rest) => {
     case 'pow_R': func = power_R;
       break;
     case 'pow_I': func = power_I;
+      break;
+    case 'fib_R': func = fibonacci_R;
+      break;
+    case 'fib_I': func = fibonacci_I;
       break;
     case 'lineal_R': func = busqueda_lineal_R;
       needsArray = true;
