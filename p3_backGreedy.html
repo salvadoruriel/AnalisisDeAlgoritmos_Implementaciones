@@ -6,17 +6,16 @@
 	<meta name="viewport" content="width=device-width">
 	<title>Algoritmos back tracking & greedy</title>
 	<link href="style.css" rel="stylesheet" type="text/css" />
-  <style type="text/css"></style>
+	<style type="text/css">
+	</style>
 	<script src="./p3_backGreedy.js" type="module"></script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-  </script>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-  <!-- https://www.npmjs.com/package/pseudocode -->
-  <script>
-    MathJax = {
+	<!-- https://www.npmjs.com/package/pseudocode -->
+	<script>
+		MathJax = {
         tex: {
             inlineMath: [['$','$'], ['\\(','\\)']],
             displayMath: [['$$','$$'], ['\\[','\\]']],
@@ -24,43 +23,69 @@
             processEnvironments: true,
         }
     }
-  </script> 
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/tex-chtml.js"
-          integrity="sha256-3Fdoa5wQb+JYfEmTpQHx9sc/GuwpfC/0R9EpBki+mf8=" crossorigin>
-  </script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.js">
-  </script> 
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/tex-chtml.js" integrity="sha256-3Fdoa5wQb+JYfEmTpQHx9sc/GuwpfC/0R9EpBki+mf8="
+	 crossorigin>
+
+	</script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.js">
+
+	</script>
 </head>
 
 <body>
 	<h1>Algoritmos backtracking & greedy</h1>
 	<br>
-  <p>Aquí se encuentran algoritmos que resuelven problemas usando back tracking o de forma greedy (glotona).</p>
+  <p>Aquí se encuentran algoritmos que resuelven problemas usando back tracking o de forma greedy (glotona). Los tiempos de ejecución aparecen muy ligeramente modificados por usar fúnciones "<a href="https://en.wikipedia.org/wiki/Wrapper_function">wrapper</a>"</p>
   <div class="toc_container">
     <h2 class="toc_title">Índice</h2>
     <ol class="toc">
-      <li><a href="#a">Backtracking</a>
+      <li><a href="#backtrack">Backtracking</a>
         <ol>
-          <li><a href="#nq">Recursive nqueens</a></li>
+          <li><a href="#nqueen">N reinas recursivo</a></li>
         </ol>
       </li>
       <li><a href="#b">Greedy</a></li>
     </ol>
   </div>
-	<br>
+	<br><!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
   
   <div class="divSeparator"></div>
-  <h2 id="a">a</h2>
-
-  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  <h2 id="backtrack">Backtracking</h2>
+  <p>Los algoritmos backtracking buscan todas las posibles formas de actuar en un problema con tal de encontrar una solución. Son efectivos pero en problemas grandes se vuelven demasiado lentos.</p>
+  <!-- +++++++ -->
   <div class="divSeparator"></div>
-  <h2 id="b">Algoritmo solucion del problema de n reinas</h2>
+  <h3 id="nqueen">Algoritmo solucion del problema de n reinas</h3>
+  <p>Este es un problema clásico de backtracking, consiste en colocar \( n \) cantidad reinas de ajedrez en un tablero de \( n \) filas y \( n \) columnas, tal que ninguna reina ataque a otra, esto es que no se encuentren en la misma fila, columna o diagonal.</p>
+  <h4>Descripción del algoritmo</h4>
+  <p>Busca una solucion valida para el problema de las n reinas.Tiene tiempo de ejecución exponencial: \( T(n) = \Theta (n) \)</p>
 
+  <h4>Pseudocódigo</h4>
+  <img src="./i3_backGreedy/recursivenqueens.PNG" style="width:80%">
+  <p>Código de (Erickson, 2019).</p>
+
+  <h4>Fuente bibliográfica</h4>
+  <p>Erickson, J. (2019). <em>Algorithms</em> (p.73). http://algorithms.wtf</p>
+
+  <h4>Implementación</h4>
+  <p>Realizada en Javascript. Valores grandes de n pueden alentar.</p>
+  <b>Entrada:</b>
+  <p>El número \( n \) de renglones y columnas de la tabla \( n*n \).<b>Nota: n mayor a 14 es muy lento.</b></p>
+  n = <input type="text" id="entry_nQueen" value="4" size="2" maxlength="4"> 
+  <button onclick="runFunc('ans_nQueen','delay_nQueen','nQueens','entry_nQueen',)" >Correr</button>
+  <br>
+  <br>
+  <b>Salida:</b>
+  <p>Todas las posibles respuestas en forma lista con las posiciones de las reinas, donde el número representa la columna y la posicion en la lista el renglon. Iniciando desde 0.
+  <br> Y tiempo de ejecución del algoritmo, sin contar llamadas u operaciones extras en JavaScript (excepto por el wrapper que usa la funcion, pero deberia valer casi constante junto con la impresion de respuestas).<p>
+  \( n=\; \)<b id="ans_nQueen"></b>
+  <div id="delay_nQueen"></div>
 
   <script>
-    var codes = ['a-code','b-code'];
+    //var codes = ['a-code','b-code'];
+    var codes = [];
     for(cod of codes){
       pseudocode.renderElement(document.getElementById( cod),{lineNumber: true, lineNumberPunc: ' ', noEnd: true});
     }

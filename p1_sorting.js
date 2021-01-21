@@ -49,7 +49,7 @@ const promiseHandler = async (func, Arr, ...rest) => {
   const { ans, t0, t1 } = await actualPromise(func, Arr, ...rest);
   setTimeout(() => {
     document.getElementById("loading").style.display = "none";
-    //const time = t1 - t0;
+    //const time = t1 - t0; //no fixed decimals, hard to compare on console
     const time = Number((t1 - t0).toFixed(11));
     const msg = 'Este algoritmo tardo ' + time + ' milisegundos.';
     //func doesn't retain name.
