@@ -1,5 +1,6 @@
 import nQueens from './s3_backGreedy/recursiveNqueens.js';
 import huffman from './s3_backGreedy/huffman.js';
+import { wrapRecurActSelect, wrapGreedyActSelect } from './s3_backGreedy/activitySelector.js';
 
 //explicacion en s1_sorting.js //totally converted to generic
 const actualPromise = (func, ...rest) => {
@@ -9,7 +10,7 @@ const actualPromise = (func, ...rest) => {
     var ans;
     if (!isRestEmpty) {
       ans = func(...rest);
-    } else{
+    } else {
       console.log('Error: No parameter function?');
       ans = null;
     }
@@ -22,7 +23,7 @@ const actualPromise = (func, ...rest) => {
 const measureAndOutputTime = async (idOutAns, idOutTime, func, ...rest) => {
   const { ans, t0, t1 } = await actualPromise(func, ...rest);
   setTimeout(() => {
-    const time = t1-t0;
+    const time = t1 - t0;
     const msg = 'Este algoritmo tardo ' + time + ' milisegundos.';
     console.log(msg);
     document.getElementById(idOutTime).innerHTML = msg;
@@ -59,6 +60,20 @@ const runFunc = (idOutAns, idOutTime, func, idEntry, ...rest) => {
       var list = document.getElementById(idEntry).value.split(',');
       measureAndOutputTime(idOutAns, idOutTime, huffman, list);
       break;
+    case 'actSelect_R':
+      var text = document.getElementById(idEntry).value.split(',');
+      var ArrS = text.map((txt) => parseInt(txt, 10));
+      var text = document.getElementById(rest[0]).value.split(',');
+      var ArrF = text.map((txt) => parseInt(txt, 10));
+      measureAndOutputTime(idOutAns, idOutTime, wrapRecurActSelect, ArrS, ArrF);
+      break;
+    case 'actSelect_I':
+      var text = document.getElementById(idEntry).value.split(',');
+      var ArrS = text.map((txt) => parseInt(txt, 10));
+      var text = document.getElementById(rest[0]).value.split(',');
+      var ArrF = text.map((txt) => parseInt(txt, 10));
+      measureAndOutputTime(idOutAns, idOutTime, wrapGreedyActSelect, ArrS, ArrF);
+      break;
     default:
       console.log("Error:" + func);
       return;
@@ -67,9 +82,9 @@ const runFunc = (idOutAns, idOutTime, func, idEntry, ...rest) => {
 }
 window.runFunc = runFunc
 
-const hideShow = (idDiv,objBut) => {
+const hideShow = (idDiv, objBut) => {
   var section = document.getElementById(idDiv);
-  objBut.innerHTML = objBut.innerHTML == '[ Mostrar ]'?'[ Ocultar ]':'[ Mostrar ]';
+  objBut.innerHTML = objBut.innerHTML == '[ Mostrar ]' ? '[ Ocultar ]' : '[ Mostrar ]';
   if (section.style.display === "none") {
     section.style.display = "block";
   } else {
