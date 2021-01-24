@@ -6,8 +6,7 @@
 	<meta name="viewport" content="width=device-width">
 	<title>Algoritmos back tracking & greedy</title>
 	<link href="style.css" rel="stylesheet" type="text/css" />
-	<style type="text/css">
-	</style>
+	<style type="text/css"></style>
 	<script src="./p3_backGreedy.js" type="module"></script>
 
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -46,7 +45,11 @@
           <li><a href="#nqueen">N reinas recursivo</a></li>
         </ol>
       </li>
-      <li><a href="#b">Greedy</a></li>
+      <li><a href="#greedy">Greedy</a>
+        <ol>
+          <li><a href="#huffman">Códigos de Huffman</a></li>
+        </ol>
+      </li>
     </ol>
   </div>
 	<br><!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
@@ -57,35 +60,75 @@
   <p>Los algoritmos backtracking buscan todas las posibles formas de actuar en un problema con tal de encontrar una solución. Son efectivos pero en problemas grandes se vuelven demasiado lentos.</p>
   <!-- +++++++ -->
   <div class="divSeparator"></div>
-  <h3 id="nqueen">Algoritmo solucion del problema de n reinas</h3>
-  <p>Este es un problema clásico de backtracking, consiste en colocar \( n \) cantidad reinas de ajedrez en un tablero de \( n \) filas y \( n \) columnas, tal que ninguna reina ataque a otra, esto es que no se encuentren en la misma fila, columna o diagonal.</p>
-  <h4>Descripción del algoritmo</h4>
-  <p>Busca una solucion valida para el problema de las n reinas.Tiene tiempo de ejecución exponencial: \( T(n) = \Theta (n) \)</p>
+  <h3 id="nqueen">Algoritmo solucion del problema de n reinas  <button onclick="hideShow('div_nqueen',this)" class="buttSpoiler">[ Ocultar ]</button></h3>
+  <div id="div_nqueen">
+    <p>Este es un problema clásico de backtracking, consiste en colocar \( n \) cantidad reinas de ajedrez en un tablero de \( n \) filas y \( n \) columnas, tal que ninguna reina ataque a otra, esto es que no se encuentren en la misma fila, columna o diagonal.</p>
+    <h4>Descripción del algoritmo</h4>
+    <p>Busca una solucion valida para el problema de las n reinas. Tiene tiempo de ejecución exponencial.</p>
 
-  <h4>Pseudocódigo</h4>
-  <img src="./i3_backGreedy/recursivenqueens.PNG" style="width:80%">
-  <p>Código de (Erickson, 2019).</p>
+    <h4>Pseudocódigo</h4>
+    <img src="./i3_backGreedy/recursivenqueens.PNG" style="width:80%">
+    <p>Código de (Erickson, 2019).</p>
 
-  <h4>Fuente bibliográfica</h4>
-  <p>Erickson, J. (2019). <em>Algorithms</em> (p.73). http://algorithms.wtf</p>
+    <h4>Fuente bibliográfica</h4>
+    <p>Erickson, J. (2019). <em>Algorithms</em> (p.73). http://algorithms.wtf</p>
 
-  <h4>Implementación</h4>
-  <p>Realizada en Javascript. Valores grandes de n pueden alentar.</p>
-  <b>Entrada:</b>
-  <p>El número \( n \) de renglones y columnas de la tabla \( n*n \).<b>Nota: n mayor a 13 es muy lento.</b></p>
-  n = <input type="text" id="entry_nQueen" value="4" size="2" maxlength="4"> 
-  <button onclick="runFunc('ans_nQueen','delay_nQueen','nQueens','entry_nQueen',)" >Correr</button>
-  <br>
-  <br>
-  <b>Salida:</b>
-  <p>Todas las posibles respuestas en forma lista con las posiciones de las reinas, donde el número representa la columna y la posicion en la lista el renglon. Iniciando desde 0.
-  <br> Y tiempo de ejecución del algoritmo, sin contar llamadas u operaciones extras en JavaScript (excepto por el wrapper que usa la funcion, pero deberia valer casi constante junto con la impresion de respuestas).<p>
-  <p>\( Soluciones:\; \)</p>
-	<textarea id="ans_nQueen" rows="8" cols="45" style="width: 80%" disabled=true>
-    Esperando...
-  </textarea>
-  <div id="delay_nQueen"></div>
+    <h4>Implementación</h4>
+    <p>Realizada en Javascript. Valores grandes de n pueden alentar.</p>
+    <b>Entrada:</b>
+    <p>El número \( n \) de renglones y columnas de la tabla \( n*n \).<b>Nota: n mayor a 13 es muy lento.</b></p>
+    n = <input type="text" id="entry_nQueen" value="4" size="2" maxlength="4"> 
+    <button onclick="runFunc('ans_nQueen','delay_nQueen','nQueens','entry_nQueen')" >Correr</button>
+    <br>
+    <br>
+    <b>Salida:</b>
+    <p>Todas las posibles respuestas en forma lista con las posiciones de las reinas, donde el número representa la columna (iniciando desde 0) y la posicion en la lista el renglon.
+    <br> Y tiempo de ejecución del algoritmo, sin contar llamadas u operaciones extras en JavaScript (excepto por el wrapper que usa la funcion, pero deberia valer casi constante junto con la impresion de respuestas).<p>
+    <p>\( Soluciones:\; \)</p>
+    <textarea id="ans_nQueen" rows="8" cols="45" style="width: 80%" disabled=true>
+      Esperando...
+    </textarea>
+    <div id="delay_nQueen"></div>
+  </div>
 
+  
+  <div class="divSeparator"></div>
+  <h2 id="greedy">Greedy</h2>
+  <p>Los algoritmos greedy siempre seleccionan la mejor opción en cada paso, o la que parece ser, logrando soluciones optimas locales, pero no siempre son globales.</p>
+  <!-- +++++++ -->
+  <div class="divSeparator"></div>
+  <h3 id="huffman">Códigos de Huffman  <button onclick="hideShow('div_huffman',this)" class="buttSpoiler">[ Ocultar ]</button></h3>
+  <div id="div_huffman">
+    <p>En un problema donde se tiene una cierte cantidad de caracteres y cada letra tiene su frecuencia, de que manera se puede usar menos bits para diferenciar y almacenar las todos los caraccteres.</p>
+    <h4>Descripción del algoritmo</h4>
+    <p>Busca una solucion optima para el planteamiento de huffman según unos caracteres.</p>
+
+    <h4>Pseudocódigo</h4>
+    <img src="./i3_backGreedy/huffman.PNG" style="width:80%">
+    <p>Código de (Cormen, 2001).</p>
+
+    <h4>Fuente bibliográfica</h4>
+    <p>Thomas H. Cormen, C. (2001). <em>Introduction to algorithms</em> (p. 431). The MIT Press.</p>
+
+    <h4>Implementación</h4>
+    <p>Realizada en Javascript. Se usó una estructura de arbol ya que el valor regresado en pseudocódigo original descarta todo el acomodo hecho en Q para identificar el arbol construido. Si bien es valido con listas y otras modificaciones aun asi no se pierde mucha velocidad ya que los objetos se pasan por referencia en donde más se repiten, o el proceso de copia es constante.</p>
+    <b>Entrada:</b>
+    <p>El conjunto ordenado \( C \) de \(n \) caracteres, donde cada carácter \( c \in C \) tiene un atributo frecuencia (se ordena con la frecuencia de menor a mayor). Separados por coma cada par "caracter:frecuencia".<b>Nota: .</b></p>
+    Lista = <textarea id="entry_huffman" rows="8" cols="45" style="width: 100%">f:5,e:9,c:12,b:13,d:16,a:45</textarea>
+    <!-- f:5000,e:9000,d:16000,c:12000,b:13000,a:45000 -->
+    <button onclick="runFunc('ans_huffman','delay_huffman','huffman','entry_huffman')" >Correr</button>
+    <br>
+    <br>
+    <b>Salida:</b>
+    <p>Tamaño de almacenamiento mas chico de 0s y 1s obtenido por algoritmo Greedy.
+    <br> Y tiempo de ejecución del algoritmo, sin contar llamadas u operaciones extras en JavaScript (excepto por el wrapper que usa la funcion, pero deberia valer casi constante junto con la impresion de respuestas).<p>
+    <p>\( Tamaño:\; \) <b id="ans_huffman"></b></p>
+    <div id="delay_huffman"></div>
+  </div>
+
+
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   <script>
     //var codes = ['a-code','b-code'];
     var codes = [];

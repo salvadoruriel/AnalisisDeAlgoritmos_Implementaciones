@@ -1,4 +1,5 @@
 import nQueens from './s3_backGreedy/recursiveNqueens.js';
+import huffman from './s3_backGreedy/huffman.js';
 
 //explicacion en s1_sorting.js //totally converted to generic
 const actualPromise = (func, ...rest) => {
@@ -54,6 +55,10 @@ const runFunc = (idOutAns, idOutTime, func, idEntry, ...rest) => {
       var nNums = parseInt(document.getElementById(idEntry).value, 10);
       measureAndOutputTime(idOutAns, idOutTime, nQueens, nNums);
       break;
+    case 'huffman':
+      var list = document.getElementById(idEntry).value.split(',');
+      measureAndOutputTime(idOutAns, idOutTime, huffman, list);
+      break;
     default:
       console.log("Error:" + func);
       return;
@@ -61,3 +66,14 @@ const runFunc = (idOutAns, idOutTime, func, idEntry, ...rest) => {
   document.getElementById(idOutAns).innerHTML = 'Si este mensaje dura más de 5 segundos entonces hubo un ¡Error! Checar consola.';
 }
 window.runFunc = runFunc
+
+const hideShow = (idDiv,objBut) => {
+  var section = document.getElementById(idDiv);
+  objBut.innerHTML = objBut.innerHTML == '[ Mostrar ]'?'[ Ocultar ]':'[ Mostrar ]';
+  if (section.style.display === "none") {
+    section.style.display = "block";
+  } else {
+    section.style.display = "none";
+  }
+}
+window.hideShow = hideShow;
