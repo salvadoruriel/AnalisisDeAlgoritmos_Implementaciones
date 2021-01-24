@@ -37,7 +37,7 @@
 <body>
 	<h1>Algoritmos backtracking & greedy</h1>
 	<br>
-  <p>Aquí se encuentran algoritmos que resuelven problemas usando back tracking o de forma greedy (glotona). Los tiempos de ejecución aparecen muy ligeramente modificados por usar fúnciones "<a href="https://en.wikipedia.org/wiki/Wrapper_function">wrapper</a>"</p>
+  <p>Aquí se encuentran algoritmos que resuelven problemas usando back tracking o de forma greedy (glotona). Los tiempos de ejecución aparecen muy ligeramente modificados por usar fúnciones "<a href="https://web.archive.org/web/20201112021653/https://en.wikipedia.org/wiki/Wrapper_function">wrapper</a>"</p>
   <div class="toc_container">
     <h2 class="toc_title">Índice</h2>
     <ol class="toc">
@@ -72,7 +72,7 @@
   <h4>Implementación</h4>
   <p>Realizada en Javascript. Valores grandes de n pueden alentar.</p>
   <b>Entrada:</b>
-  <p>El número \( n \) de renglones y columnas de la tabla \( n*n \).<b>Nota: n mayor a 14 es muy lento.</b></p>
+  <p>El número \( n \) de renglones y columnas de la tabla \( n*n \).<b>Nota: n mayor a 13 es muy lento.</b></p>
   n = <input type="text" id="entry_nQueen" value="4" size="2" maxlength="4"> 
   <button onclick="runFunc('ans_nQueen','delay_nQueen','nQueens','entry_nQueen',)" >Correr</button>
   <br>
@@ -80,7 +80,10 @@
   <b>Salida:</b>
   <p>Todas las posibles respuestas en forma lista con las posiciones de las reinas, donde el número representa la columna y la posicion en la lista el renglon. Iniciando desde 0.
   <br> Y tiempo de ejecución del algoritmo, sin contar llamadas u operaciones extras en JavaScript (excepto por el wrapper que usa la funcion, pero deberia valer casi constante junto con la impresion de respuestas).<p>
-  \( n=\; \)<b id="ans_nQueen"></b>
+  <p>\( Soluciones:\; \)</p>
+	<textarea id="ans_nQueen" rows="8" cols="45" style="width: 80%" disabled=true>
+    Esperando...
+  </textarea>
   <div id="delay_nQueen"></div>
 
   <script>

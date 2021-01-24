@@ -24,7 +24,14 @@ const wrapQueens = (...rest) => {
   console.log("---------")
   console.log(Arr)
   console.log(Ans)*/
-  return Ans;
+  //return Ans;
+  //prettifying output
+  var solution = '';
+  for(var i=0; i< Ans.length; i++){
+    solution += (i+1).toString() +'.  ' + Ans[i].toString() + '\n';
+    //console.log(solution);
+  }
+  return solution;
 }
 
 export default wrapQueens;

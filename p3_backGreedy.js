@@ -17,11 +17,11 @@ const actualPromise = (func, ...rest) => {
   });
   return promise;
 }
-//each algorithm needs to handle the answer output
+
 const measureAndOutputTime = async (idOutAns, idOutTime, func, ...rest) => {
   const { ans, t0, t1 } = await actualPromise(func, ...rest);
   setTimeout(() => {
-    const time = t1-t0
+    const time = t1-t0;
     const msg = 'Este algoritmo tardo ' + time + ' milisegundos.';
     console.log(msg);
     document.getElementById(idOutTime).innerHTML = msg;

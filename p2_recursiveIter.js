@@ -38,12 +38,25 @@ const measureAndOutputTime = async (idOutAns, idOutTime, func, val1, ...rest) =>
   return 1;
 }
 
+const hideShow = (idDiv,objBut) => {
+  var section = document.getElementById(idDiv);
+  //console.log(objBut)
+  objBut.innerHTML = objBut.innerHTML == '[ Mostrar ]'?'[ Ocultar ]':'[ Mostrar ]';
+  if (section.style.display === "none") {
+    //section.style.display = "block"; //not applicable in this page
+    section.style.display = "table";
+  } else {
+    section.style.display = "none";
+  }
+}
+window.hideShow = hideShow;
+
 const toArr = (idArr) => {
   var text = document.getElementById(idArr).value.split(',');
   var Arr = text.map((txt) => parseInt(txt, 10));
   return Arr;
 }
-window.toArr = toArr
+window.toArr = toArr;
 
 const runFunc = (idEntry, idOutAns, idOutTime, func, ...rest) => {
   //preparing elements of function to just measure it

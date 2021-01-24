@@ -37,6 +37,18 @@ table, th, td{
   padding: 5px; /*padding between content and border*/
 }
 
+.buttSpoiler{
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #069;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .divSeparator {
   border-top: 1px solid #147c80;
   border-bottom: 1px solid #147c80;
