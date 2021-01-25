@@ -6,7 +6,7 @@ import quickSort from './s1_sortingAlgorithms/quick_sort.js';
 import randomizedQuickSort from './s1_sortingAlgorithms/randomized_quick_sort.js';
 import countingSort from './s1_sortingAlgorithms/counting_sort.js';
 import radixSort from './s1_sortingAlgorithms/radix_sort.js';
-import { makeRandomList } from './randomHandling.js';
+import { makeRandomList } from './sz_functions/randomHandling.js';
 window.makeRandomList = makeRandomList //make html aware of function
 
 //regarding graph visualization:

@@ -4,11 +4,20 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Algoritmos</title>
+	<title>Programación Dinamica</title>
 	<link href="style.css" rel="stylesheet" type="text/css" />
 	<style type="text/css">
+  table{
+    width: auto;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+  }
+  td{
+    width: auto;
+  }
 	</style>
-	<script src="./p" type="module"></script>
+	<script src="./p4_dinamica.js" type="module"></script>
 
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -37,23 +46,69 @@
 <body>
 	<h1>Algoritmos</h1>
 	<br>
-  <p>Aquí se encuentran algoritmos que pueden </p>
+  <p>Aquí se encuentran algoritmos que resuelven problemas por medio de programación dinamica, la cual consiste en usar la informacion local para encontrar la solucion, la cual depende de cada paso.</p>
   <div class="toc_container">
     <h2 class="toc_title">Índice</h2>
     <ol class="toc">
-      <li><a href="#a">a</a></li>
+      <li><a href="#scml">Subseccion común más larga (SCML)</a></li>
       <li><a href="#b">b</a></li>
     </ol>
   </div>
 	<br>
 
   <div class="divSeparator"></div>
-  <h2 id="a">Factorial</h2>
+  <h2 id="scml">Subseccion común más larga (SCML)  <button onclick="hideShow('div_scml',this)" class="buttSpoiler">[ Ocultar ]</button></h2>
+  <p>En este problema se quiere encontrar la subseccion mas larga de una cadena que se puede encontrar en otra.</p>
+  <!-- +++++++ -->
+  <div id="div_scml">
+    <p>Se tienen dos algoritmos, uno que resuelve (LCS-LENGTH) y otro que imprime la cadena en orden(PRINT-LCS).</p>
+    <h4>Descripción del algoritmo (LCS-LENGTH)</h4>
+    <p>Este algoritmo busca la respuesta de la cadena. Tiene tiempo de ejecución: \( T(n) = \Theta (mn) \)</p>
+
+    <h4>Pseudocódigo</h4>
+    <img src="./i4_dinamica/lcs_length.PNG">
+    <p>Código de (Cormen, 2001).</p>
+
+    <h4>Fuente bibliográfica</h4>
+    <p>Thomas H. Cormen, C. (2001). <em>Introduction to algorithms</em> (p. 394). The MIT Press.</p>
+
+    <h4>Descripción del algoritmo (PRINT-LCS)</h4>
+    <p>Este algoritmo imprime la subseccion solucion en orden. Tiene tiempo de ejecución: \( T(n) = \Theta (n+m) \)</p>
+
+    <h4>Pseudocódigo</h4>
+    <img src="./i4_dinamica/print_lcs.PNG">
+    <p>Código de (Cormen, 2001).</p>
+
+    <h4>Fuente bibliográfica</h4>
+    <p>Thomas H. Cormen, C. (2001). <em>Introduction to algorithms</em> (p. 395). The MIT Press.</p>
+
+    <h4>Implementación</h4>
+    <p>Realizada en Javascript.</p>
+    <b>Entrada:</b>
+    <p>Recibe 2 listas con elementos a obtener la subseccion común más larga. No necesitan ser de mismo tamaño.<b>Nota: Hola.</b></p>
+    <p>
+    \( X \) = <textarea id="entry_Xscml" rows="1" cols="45" style="width: 90%">A,B,C,B,D,A,B</textarea>
+      <br>
+    \( Y \) = <textarea id="entry_Yscml" rows="1" cols="45" style="width: 90%">B,D,C,A,B,A</textarea>
+    </p>
+    <button onclick="runFunc('ans_scml','delay_scml','scml','entry_Xscml','entry_Yscml')" >Correr</button>
+    <br>
+    <br>
+    <b>Salida:</b>
+    <p>Matrices \( c \) y \( b\) que crean la solucion de la subseccion. Junto con la subseccion más larga.
+    <br> Y tiempo de ejecución de los dos algoritmo LCS-LENGTH, PRINT-LCS y su suma, sin contar llamadas u operaciones extras en JavaScript (la suma tal vez no sea exacta por una funcion wrapper que imprime los valores, pero dado que PRINT-LCS requiere \( b\)  esta es la mejor forma de correr todo y simplificar las operaciones al usuario).</p>
+    <p>\( Respuesta \; \)</p>
+    <div id="ans_scml"></div>
+    <div id="delay_scml"></div>
+  </div>
 
   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   <div class="divSeparator"></div>
   <h2 id="b">Factorial</h2>
 
+
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   <script>
     //var codes = ['a-code','b-code'];
     var codes = [];
