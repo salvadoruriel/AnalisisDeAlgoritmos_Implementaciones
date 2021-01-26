@@ -1,4 +1,5 @@
 import wrapLCS from './s4_dinamica/scml.js';
+import wrapMatrixChain from './s4_dinamica/matrixChain.js';
 
 //explicacion en s1_sorting.js //totally converted to generic
 const actualPromise = (func, ...rest) => {
@@ -25,8 +26,10 @@ const measureAndOutputTime = async (idOutAns, idOutTime, func, ...rest) => {
     const msg = 'Este algoritmo tardo ' + time + ' milisegundos.';
     console.log(msg);
     document.getElementById(idOutTime).innerHTML = msg;
-    if (!ans && ans !== 0) document.getElementById(idOutAns).innerHTML = 'nulo';
-    else document.getElementById(idOutAns).innerHTML = ans.toString();
+    var ansOut = document.getElementById(idOutAns)
+    if (!ans && ans !== 0) ansOut.innerHTML = 'nulo';
+    else ansOut.innerHTML = ans.toString();
+    //MathJax.typeset(); //to update any added math formulas//v3 //doesnt work lmao
   }, 0);
   return 1;
 }
@@ -54,6 +57,11 @@ const runFunc = (idOutAns, idOutTime, func, idEntry, ...rest) => {
       var text2 = document.getElementById(rest[0]).value.split(',');
       //var ArrF = text.map((txt) => parseInt(txt, 10));
       measureAndOutputTime(idOutAns, idOutTime, wrapLCS, text1, text2);
+      break;
+    case 'matrixChain':
+      var text = document.getElementById(idEntry).value.split(',');
+      var ArrS = text.map((txt) => parseInt(txt, 10));
+      measureAndOutputTime(idOutAns, idOutTime, wrapMatrixChain, ArrS);
       break;
     default:
       console.log("Error:" + func);

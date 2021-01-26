@@ -14,7 +14,12 @@
     border: 0px;
   }
   td{
+    padding: 1px;
     width: auto;
+  }
+  th:empty, td:empty {
+    border: 0;
+    background:transparent;
   }
 	</style>
 	<script src="./p4_dinamica.js" type="module"></script>
@@ -51,6 +56,7 @@
     <h2 class="toc_title">Índice</h2>
     <ol class="toc">
       <li><a href="#scml">Subseccion común más larga (SCML)</a></li>
+      <li><a href="#matrixChain">Orden de multiplicacion de matrices</a></li>
       <li><a href="#b">b</a></li>
     </ol>
   </div>
@@ -96,15 +102,60 @@
     <br>
     <b>Salida:</b>
     <p>Matrices \( c \) y \( b\) que crean la solucion de la subseccion. Junto con la subseccion más larga.
-    <br> Y tiempo de ejecución de los dos algoritmo LCS-LENGTH, PRINT-LCS y su suma, sin contar llamadas u operaciones extras en JavaScript (la suma tal vez no sea exacta por una funcion wrapper que imprime los valores, pero dado que PRINT-LCS requiere \( b\)  esta es la mejor forma de correr todo y simplificar las operaciones al usuario).</p>
+    <br> Y tiempo de ejecución de LCS-LENGTH, PRINT-LCS y la impresion de todo al final sin contar llamadas u operaciones extras en JavaScript (dado que PRINT-LCS requiere \( b\)  esta es la mejor forma de correr todo y simplificar las operaciones al usuario).</p>
     <p>\( Respuesta \; \)</p>
+    <br>
     <div id="ans_scml"></div>
     <div id="delay_scml"></div>
   </div>
 
   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   <div class="divSeparator"></div>
-  <h2 id="b">Factorial</h2>
+  <h2 id="matrixChain">Orden de multiplicacion de matrices  <button onclick="hideShow('div_matrixChain',this)" class="buttSpoiler">[ Ocultar ]</button></h2>
+  <p>La multiplicacion de matrices es una operacion cara especialmente cuando se trata de multiplicar varias matrices, por ello tiene mucha importancia el orden en que se multiplican para reducir el número de operaciones.</p>
+  <!-- +++++++ -->
+  <div id="div_matrixChain">
+    <p>Se tienen dos algoritmos, uno que encuentra el mejor orden para multiplicar matrices(MATRIX-CHAIN-ORDER) y otro que lo imprime (PRINT-OPTIMAL-PARENTS).</p>
+    <h4>Descripción del algoritmo (MATRIX-CHAIN-ORDER)</h4>
+    <p>Este algoritmo busca el mejor orden de multiplicar matrices para hacer menos operaciones. Tiene tiempo de ejecución: \( T(n) = O (n^3) \)</p>
+
+    <h4>Pseudocódigo</h4>
+    <img src="./i4_dinamica/matrixChain.PNG">
+    <p>Código de (Cormen, 2001).</p>
+
+    <h4>Fuente bibliográfica</h4>
+    <p>Thomas H. Cormen, C. (2001). <em>Introduction to algorithms</em> (p. 375). The MIT Press.</p>
+
+    <h4>Descripción del algoritmo (PRINT-OPTIMAL-PARENTS)</h4>
+    <p>Este algoritmo imprime las matrices y los parentesis en la forma que reducen el número de operaciones a realizar. Tiene tiempo de ejecución: \( T(n) = \Theta (n) \)</p>
+
+    <h4>Pseudocódigo</h4>
+    <img src="./i4_dinamica/printOptimal.PNG">
+    <p>Código de (Cormen, 2001).</p>
+
+    <h4>Fuente bibliográfica</h4>
+    <p>Thomas H. Cormen, C. (2001). <em>Introduction to algorithms</em> (p. 377). The MIT Press.</p>
+
+    <h4>Implementación</h4>
+    <p>Realizada en Javascript.</p>
+    <b>Entrada:</b>
+    <p>Recibe 1 lista con los tamaños renglon, columna de las matrices a operar, claramente las matrices deben estar en el orden que les permitan multiplicarse.<b>Nota: No hay nota.</b><br>
+    La imagen muestra el ejemplo que viene predeterminado.
+    <img src="./i4_dinamica/exampleMatrixChain.PNG">
+    </p>
+    <p>
+    \( p \) = <textarea id="entry_pMatrix" rows="1" cols="45" style="width: 90%">30,35,15,5,10,20,25</textarea>
+    </p>
+    <button onclick="runFunc('ans_matrixChain','delay_matrixChain','matrixChain','entry_pMatrix')" >Correr</button>
+    <br>
+    <br>
+    <b>Salida:</b>
+    <p>Matrices diagonales \( m \) y \( s \) que ilustran las operaciones en la solucion . Junto con las matrices y parentesis que separan el mejor orden de multiplicar.
+    <br> Y tiempo de ejecución de LCS-LENGTH, PRINT-LCS y la impresion de todo al final sin contar llamadas u operaciones extras en JavaScript (dado que PRINT-LCS requiere \( b\)  esta es la mejor forma de correr todo y simplificar las operaciones al usuario).</p>
+    <p>\( Respuesta \; \)</p>
+    <div id="ans_matrixChain"></div>
+    <div id="delay_matrixChain"></div>
+  </div>
 
 
   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
