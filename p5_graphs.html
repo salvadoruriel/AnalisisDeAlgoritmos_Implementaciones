@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Algoritmos</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+	</style>
+	<script src="./p5_graphs.js" type="module"></script>
+
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+	<!-- https://www.npmjs.com/package/pseudocode -->
+	<script>
+		MathJax = {
+        tex: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            displayMath: [['$$','$$'], ['\\[','\\]']],
+            processEscapes: true,
+            processEnvironments: true,
+        }
+    }
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/tex-chtml.js" integrity="sha256-3Fdoa5wQb+JYfEmTpQHx9sc/GuwpfC/0R9EpBki+mf8="
+	 crossorigin>
+
+	</script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.js">
+
+	</script>
+</head>
+
+<body>
+	<h1>Algoritmos</h1>
+	<br>
+  <p>Aquí se encuentran algoritmos que pueden </p>
+  <div class="toc_container">
+    <h2 class="toc_title">Índice</h2>
+    <ol class="toc">
+      <li><a href="#bfs">Breadth First Search</a></li>
+      <li><a href="#b">b</a></li>
+    </ol>
+  </div>
+	<br>
+
+  <div class="divSeparator"></div>
+  <h2 id="bfs">Breadth First Search  <button onclick="hideShow('div_bfs',this)" class="buttSpoiler">[ Ocultar ]</button></h2>
+  <p>En este algoritmo se calculan las distanicas desde el nodo inicial a todos los demas.</p>
+  <!-- +++++++ -->
+  <div id="div_bfs">
+    <p>Hay 2 algoritmos uno que calcula las distancias (BFS) y otro que imprime el camino desde el nodo raiz a otro (PRINT-PATH), siempre que ya se haya calculado el camino con BFS. El algoritmo hace uso de un queue first in first out (FIFO) y la gráfica en forma de listas de adyacencia.</p>
+
+    <h4>Descripción del algoritmo(BFS)</h4>
+    <p>El algoritmo navega la gráfica para marcar las distancias desde el nodo raíz a todas las demas. Tiene tiempo de ejecución: \( T(n) = O (V+ E) \). Con V vertices y E aristas (edges).</p>
+    <h4>Pseudocódigo</h4>
+    <img src="./i5_graphs/bfs.PNG">
+    <p>Código de (Cormen, 2001).</p>
+    <h4>Fuente bibliográfica</h4>
+    <p>Thomas H. Cormen, C. (2001). <em>Introduction to algorithms</em> (p. 595). The MIT Press.</p>
+
+    <h4>Descripción del algoritmo(PRINT-PATH)</h4>
+    <p>El algoritmo navega la gráfica para marcar las distancias desde el nodo raíz a todas las demas. Tiene tiempo de ejecución \( T(n) \) lineal segun el número de vertices que navega e imprime para llegar al nodo buscado.</p>
+    <h4>Pseudocódigo</h4>
+    <img src="./i5_graphs/print_path.PNG">
+    <p>Código de (Cormen, 2001).</p>
+    <h4>Fuente bibliográfica</h4>
+    <p>Thomas H. Cormen, C. (2001). <em>Introduction to algorithms</em> (p. 601). The MIT Press.</p>
+
+    <h4>Implementación</h4>
+    <p>Realizada en Javascript. Queue se implementa como lista para usarse más facil y libremente.</p>
+    <b>Entrada:</b>
+    <p>Recibe la gráfica en forma de lista de adyacencia, comas "," separa el nodo con los adyacentes, mientras que enter (o nueva linea) separa cada nodo en la lista.<b>Nota: Ingrese el primer nodo como la raíz. Evite espacios, o caracteres extra, ya que pueden ser leidos como otros nodos o conexiones.</b>
+    <br>
+    La imagen muestra el ejemplo que viene predeterminado.
+    <img src="./i5_graphs/exampleBFS.PNG">
+    </p>
+    <p>
+    \( G \) = <textarea id="entry_bfs" rows="9" cols="20" style="width: 90%">s,w,r
+r,v,s
+v,r
+w,s,t,x
+t,w,x,u
+x,w,t,u,y
+u,t,x,y
+y,x,u</textarea>
+    </p>
+    <button onclick="runFunc('ans_bfs','delay_bfs','bfs','entry_bfs')" >Correr</button>
+    <br>
+    <br>
+    <b>Salida:</b>
+    <p>Matrices \( c \) y \( b\) que crean la solucion de la subseccion. Junto con la subseccion más larga.
+    <br> Y tiempo de ejecución de LCS-LENGTH, PRINT-LCS y la impresion de todo al final sin contar llamadas u operaciones extras en JavaScript (dado que PRINT-LCS requiere \( b\)  esta es la mejor forma de correr todo y simplificar las operaciones al usuario).</p>
+    <p>\( Respuesta \; \)</p>
+    <br>
+    <div id="ans_bfs"></div>
+    <div id="delay_bfs"></div>
+  </div>
+
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  <div class="divSeparator"></div>
+  <h2 id="b">Factorial</h2>
+
+
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  <script>
+    //var codes = ['a-code','b-code'];
+    var codes = [];
+    for(cod of codes){
+      pseudocode.renderElement(document.getElementById( cod),{lineNumber: true, lineNumberPunc: ' ', noEnd: true});
+    }
+  </script>
+
+</body>
+
+<footer>
+	Hecho por Salvador
+</footer>
+
+</html>
