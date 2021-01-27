@@ -54,8 +54,9 @@ const runFunc = (idOutAns, idOutTime, func, idEntry, ...rest) => {
       //de https://web.archive.org/web/20190905055615/https://stackoverflow.com/questions/8125709/javascript-how-to-split-newline
       var text = document.getElementById(idEntry).value.split(/\r?\n/);
       //var ArrS = text.map((txt) => parseInt(txt, 10));
+      var vDest = document.getElementById(rest[0]).value;
       //console.log(text);
-      measureAndOutputTime(idOutAns, idOutTime, wrapBFS, text);
+      measureAndOutputTime(idOutAns, idOutTime, wrapBFS, text, vDest);
       break;
     default:
       console.log("Error:" + func);

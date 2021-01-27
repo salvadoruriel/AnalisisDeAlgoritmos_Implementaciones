@@ -65,16 +65,26 @@ const wrapBFS = (...rest) => {
   var time1 = performance.now();
   console.log(G);
 
+  AnsBfs = [];
   var time2 = performance.now();
-  print_path(G, G[0], G[2]); //from "s" to "v"
-  //print_path(G, G[0], G.V.find(v => v.name == rest[1])); //from root to entry
+  //print_path(G, G[0], G[2]); //from "s" to "v"
+  var search = G.V.find(v => v.name == rest[1]);
+  //Verify node input exists //typeof guarantess a returned string
+  search = (typeof search == 'undefined') ? { name: rest[1], pi: null } : search;
+  print_path(G, G[0], search); //from root to entry
   var time3 = performance.now();
-  
+
   ///Prepare answer and print/////////////////777
   var answer = '';
+  /*Can't be implemented as easily
   answer += '<div style="display: inline-block;">';
-  answer += '<p> Respusta BFS: <b>' + AnsBfs.join(',') + '</b></p>';
-  answer += '<p> Tiempo de &emsp;&emsp;&emsp;&emsp&emsp;;BFS: ' + Number((time1 - time0).toFixed(11)); + '</p>';
+  //answer += String(G); //option 1 //prints [object Object],[object Object],...
+  //answer += JSON.stringify(G) //option 2 //hates circular references
+  answer += '</div>';
+  */
+  answer += '<div style="display: inline-block;">';
+  answer += '<p> Respusta BFS: <b>' + AnsBfs.join(' → ') + '</b></p>';
+  answer += '<p> Tiempo de &emsp;&emsp;&emsp;&emsp;&emsp;BFS: ' + Number((time1 - time0).toFixed(11)); + '</p>';
   answer += '<p> Tiempo de &emsp;PRINT-PATH: ' + Number((time3 - time2).toFixed(11)); + '</p>';
   answer += '<p>Tiempo en construir gráfica: ' + Number((timeG1 - timeG0).toFixed(11)); + '</p>';
   answer += '</div>';

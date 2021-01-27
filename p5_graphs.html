@@ -71,12 +71,14 @@
     <p>Thomas H. Cormen, C. (2001). <em>Introduction to algorithms</em> (p. 601). The MIT Press.</p>
 
     <h4>Implementación</h4>
-    <p>Realizada en Javascript. Queue se implementa como lista para usarse más facil y libremente.</p>
+    <p>Realizada en Javascript. Se implementa lo más proximo la lista de adyacencia y el queue a los definidos en el libro, solo que se tratan como objetos para permitir el agregar propiedas especificas que pide el pseudocódigo (como color).</p>
     <b>Entrada:</b>
     <p>Recibe la gráfica en forma de lista de adyacencia, comas "," separa el nodo con los adyacentes, mientras que enter (o nueva linea) separa cada nodo en la lista.<b>Nota: Ingrese el primer nodo como la raíz. Evite espacios, o caracteres extra, ya que pueden ser leidos como otros nodos o conexiones.</b>
     <br>
     La imagen muestra el ejemplo que viene predeterminado.
     <img src="./i5_graphs/exampleBFS.PNG">
+    <br>
+    La entrada \( v \) es para el nodo a buscar desde el origen.
     </p>
     <p>
     \( G \) = <textarea id="entry_bfs" rows="9" cols="20" style="width: 90%">s,w,r
@@ -87,12 +89,14 @@ t,w,x,u
 x,w,t,u,y
 u,t,x,y
 y,x,u</textarea>
+    <br>
+    \( v \) = <textarea id="entry_bfs_v" rows="1" cols="10">v</textarea>
     </p>
-    <button onclick="runFunc('ans_bfs','delay_bfs','bfs','entry_bfs')" >Correr</button>
+    <button onclick="runFunc('ans_bfs','delay_bfs','bfs','entry_bfs','entry_bfs_v')" >Correr</button>
     <br>
     <br>
     <b>Salida:</b>
-    <p>Matrices \( c \) y \( b\) que crean la solucion de la subseccion. Junto con la subseccion más larga.
+    <p>Ruta desde el nodo origen hasta el nodo buscado.
     <br> Y tiempo de ejecución de LCS-LENGTH, PRINT-LCS y la impresion de todo al final sin contar llamadas u operaciones extras en JavaScript (dado que PRINT-LCS requiere \( b\)  esta es la mejor forma de correr todo y simplificar las operaciones al usuario).</p>
     <p>\( Respuesta \; \)</p>
     <br>
