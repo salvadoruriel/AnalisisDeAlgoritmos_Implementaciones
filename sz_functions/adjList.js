@@ -1,10 +1,14 @@
 //adjacency list graph
+//and weigthed (expects node,value as a pair; are nodes)
 
 //G = name of graph
 //G.V = list (array) of vertices v
 //
 //v.Adj = adjacency list as array with references to other adjacent vertices in G.V
 //v.name = name of the vertex, useful for comparison
+
+//in weighted only:
+//v.Weights = weights associated with edges in same order as in Adj
 
 //all other functions come from normal arrays
 
@@ -41,6 +45,39 @@ export const newAdjListGraph = (list, name) => {
     for (var j = 1; j < edges.length; j++) { //skip first one, which is the node
       //finds the node and returns it as an object reference
       G.V[i].Adj[j - 1] = G.V.find(vertex => vertex.name == edges[j]);
+    }
+  }
+  //Filled Graph with
+  return G;
+}
+
+export const newWeightedAdjListGraph = (list, name) => {
+  var G = new Array(list.length);
+  G.name = name;
+  //to comply with Cormen notation
+  //G.V is also list of nodes or vertices
+  G.V = G;
+  //////Make list of vertices//////////////////////////
+  for (var i = 0; i < G.V.length; i++) {
+    //get all edges as nodes in a list, first one is the actual node
+    var nodes = list[i].split(';')//WARNING could cause error in single nodes
+
+    G.V[i] = { //first element in array is the node name (string/character)
+      "name": nodes[0],
+      //////Prepare adjacency list//////////////////////////
+      "Adj": new Array(nodes.length - 1), //edges for that node minus the node itself
+      "Weights": new Array(nodes.length - 1) //weights for the edges in order
+    }
+  }
+
+  //////Fill adjacency list with actual references//////////////////////////
+  for (var i = 0; i < G.V.length; i++) {
+    var edges = list[i].split(';');//WARNING could cause error in single nodes
+    for (var j = 1; j < edges.length; j++) { //skip first one, which is the node
+      var [edge, weight] = edges[j].split(',');
+      //finds the node and returns it as an object reference
+      G.V[i].Adj[j - 1] = G.V.find(vertex => vertex.name == edge);
+      G.V[i].Weights[j - 1] = parseInt(weight, 10)
     }
   }
   //Filled Graph with

@@ -8,7 +8,7 @@
 	<link href="style.css" rel="stylesheet" type="text/css" />
 	<style type="text/css">
 	</style>
-	<script src="./p.js" type="module"></script>
+	<script src="./p6_graficasDir.js" type="module"></script>
 
 	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -35,24 +35,89 @@
 </head>
 
 <body>
-	<h1>Algoritmos</h1>
+	<h1>Algoritmos de graficas dirigidas y aristas con coste</h1>
 	<br>
-  <p>Aquí se encuentran algoritmos que pueden </p>
+  <p>Aquí se encuentran algoritmos usados en graficas dirigidas y problemas que involucran un coste.</p>
   <div class="toc_container">
     <h2 class="toc_title">Índice</h2>
     <ol class="toc">
-      <li><a href="#a">a</a></li>
-      <li><a href="#b">b</a></li>
+      <li><a href="#aux">Algoritmos auxiliares</a></li>
+      <li><a href="#dijkstra">Dijkstra</a></li>
     </ol>
   </div>
 	<br>
 
   <div class="divSeparator"></div>
-  <h2 id="a">Factorial</h2>
+  <h2 id="aux">Algoritmos auxiliares <button onclick="hideShow('div_aux',this)" class="buttSpoiler">[ Ocultar ]</button></h2>
+  <p>Como varios algoritmos en esta página hacen uso de la tecnica de relajacion se mantiene por separado estas funciones por referencia.</p>
+  <div id="div_aux">
+    <p>Hay 2 algoritmos usados por los otros metodos: </p>
+
+    <h4>Descripción del algoritmo(Initialize-Single-Source)</h4>
+    <p>Este algoritmo inicializa los atributos para estimar el camino mas chico y los predecesores.Tiene tiempo de ejecución: \( \Theta (V) \). Con V vertices.</p>
+    <h4>Pseudocódigo</h4>
+    <img src="./i6_graficasDir/initializeSingleSource.PNG">
+    <p>Código de (Cormen, 2001).</p>
+    <h4>Fuente bibliográfica</h4>
+    <p>Thomas H. Cormen, C. (2001). <em>Introduction to algorithms</em> (p. 648). The MIT Press.</p>
+
+    <h4>Descripción del algoritmo(RELAX)</h4>
+    <p>Este algoritmo aplica el proceso de relajacion donde prueba si se puede mejorar el camino mas corto encontrado hacia v al ir desde u, en dado caso actualizando la informacion correspondiente. Tiene tiempo de ejecución \( O(1) \).</p>
+    <h4>Pseudocódigo</h4>
+    <img src="./i6_graficasDir/relax.PNG">
+    <p>Código de (Cormen, 2001).</p>
+    <h4>Fuente bibliográfica</h4>
+    <p>Thomas H. Cormen, C. (2001). <em>Introduction to algorithms</em> (p. 649). The MIT Press.</p>
+
+    <h4>Implementación</h4>
+    <p>Realizada en Javascript, aunque se usan en los otros algoritmos siguientes.</p>
+  </div>
 
   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
   <div class="divSeparator"></div>
-  <h2 id="b">Factorial</h2>
+  <h2 id="dijkstra">Dijkstra  <button onclick="hideShow('div_dijkstra',this)" class="buttSpoiler">[ Ocultar ]</button></h2>
+  <!-- +++++++ -->
+  <div id="div_dijkstra">
+    <p>Este algoritmo resuelve el problema de camino mas corto de una misma fuente en un problema con pesos de una grafica dirigida.</p>
+
+    <h4>Descripción del algoritmo</h4>
+    <p>El algoritmo navega la gráfica para marcar las rutas desde el nodo raíz a todos los demas nodos. Tiene tiempo de ejecución: \( O((V+ E) \lg V) \). Con V vertices y E aristas (edges).</p>
+    <h4>Pseudocódigo</h4>
+    <img src="./i6_graficasDir/dijkstra.PNG" style="max-width: 500px" >
+    <p>Código de (Cormen, 2001).</p>
+    <h4>Fuente bibliográfica</h4>
+    <p>Thomas H. Cormen, C. (2001). <em>Introduction to algorithms</em> (p. 658). The MIT Press.</p>
+
+    <h4>Implementación</h4>
+    <p>Realizada en Javascript.</p>
+    <b>Entrada:</b>
+    <p>Recibe la gráfica en forma de lista de adyacencia, punto y coma ";" separa el nodo con los adyacentes, coma sencilla "," separa el eje con el peso, mientras que enter (o nueva linea) separa cada nodo en la lista.<b>Nota: Ingrese el primer nodo como la raíz. Evite espacios, o caracteres extra, ya que pueden ser leidos como otros nodos o conexiones.</b>
+    <br>
+    <!-- 
+    -->
+    La imagen muestra el ejemplo que viene predeterminado.
+    <img src="./i6_graficasDir/exampleDijkstra.PNG">
+    <br>
+    </p>
+    <p>
+    \( G \) = <textarea id="entry_dijkstra" rows="9" cols="20" style="width: 90%">s;t,10;y,5
+t;x,1;y,2
+x;z,4
+y;t,3;x,9;z,2
+z;s,7;x,6</textarea>
+    <br>
+    </p>
+    <button onclick="runFunc('ans_dijkstra','delay_dijkstra','dijkstra','entry_dijkstra')" >Correr</button>
+    <br>
+    <br>
+    <b>Salida:</b>
+    <p>La gráfica ya procesada se observa en consola (por tener referencias circulares no se puede ver aqui, ocupa otro procesamiento).
+    <br> Y tiempo de ejecución de dijkstra, de construir la gráfica y de todo el wrapper.</p>
+    <p>\( Respuesta \; \)</p>
+    <br>
+    <div id="ans_dijkstra"></div>
+    <div id="delay_dijkstra"></div>
+  </div>
 
 
   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
