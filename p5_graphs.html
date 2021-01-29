@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Algoritmos</title>
+	<title>Algoritmos de gráficas</title>
 	<link href="style.css" rel="stylesheet" type="text/css" />
 	<style type="text/css">
 	</style>
@@ -35,21 +35,21 @@
 </head>
 
 <body>
-	<h1>Algoritmos</h1>
+	<h1>Algoritmos de gráficas</h1>
 	<br>
-  <p>Aquí se encuentran algoritmos que pueden </p>
+  <p>Aquí se encuentran algoritmos que suelen usarse para recorrer gráficas.  </p>
   <div class="toc_container">
     <h2 class="toc_title">Índice</h2>
     <ol class="toc">
       <li><a href="#bfs">Breadth First Search</a></li>
-      <li><a href="#b">b</a></li>
+      <li><a href="#dfs">Depth First search</a></li>
     </ol>
   </div>
 	<br>
 
   <div class="divSeparator"></div>
   <h2 id="bfs">Breadth First Search  <button onclick="hideShow('div_bfs',this)" class="buttSpoiler">[ Ocultar ]</button></h2>
-  <p>En este algoritmo se calculan las distanicas desde el nodo inicial a todos los demas.</p>
+  <p>En este algoritmo se calculan las distanicas desde el nodo inicial a todos los demas buscando a lo ancho de la gráfica.</p>
   <!-- +++++++ -->
   <div id="div_bfs">
     <p>Hay 2 algoritmos uno que calcula las distancias (BFS) y otro que imprime el camino desde el nodo raiz a otro (PRINT-PATH), siempre que ya se haya calculado el camino con BFS. El algoritmo hace uso de un queue first in first out (FIFO) y la gráfica en forma de listas de adyacencia.</p>
@@ -96,8 +96,8 @@ y,x,u</textarea>
     <br>
     <br>
     <b>Salida:</b>
-    <p>Ruta desde el nodo origen hasta el nodo buscado.
-    <br> Y tiempo de ejecución de LCS-LENGTH, PRINT-LCS y la impresion de todo al final sin contar llamadas u operaciones extras en JavaScript (dado que PRINT-LCS requiere \( b\)  esta es la mejor forma de correr todo y simplificar las operaciones al usuario).</p>
+    <p>Ruta desde el nodo origen hasta el nodo buscado. La gráfica ya procesada se observa en consola (por cuestion de tiempo y tener referencias circulares no se ve aqui).
+    <br> Y tiempo de ejecución de BFS, PRINT-PATH, de construir la gráfica y de la impresion de todo al final sin contar llamadas u operaciones extras en JavaScript.</p>
     <p>\( Respuesta \; \)</p>
     <br>
     <div id="ans_bfs"></div>
@@ -105,8 +105,55 @@ y,x,u</textarea>
   </div>
 
   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
   <div class="divSeparator"></div>
-  <h2 id="b">Factorial</h2>
+  <h2 id="dfs">Depth First Search  <button onclick="hideShow('div_dfs',this)" class="buttSpoiler">[ Ocultar ]</button></h2>
+  <p>En este algoritmo se buscan las rutas desde el nodo inicial a todos los demas buscando en la gráfica a lo profundo, a diferencia de lo ancho como en el código anterior.</p>
+  <!-- +++++++ -->
+  <div id="div_dfs">
+    <p>Hay 2 algoritmos  en dfs, uno que lo inicializa (DFS) y otro que hace el recorrido a lo profundo (DFS-VISIT). Para imprimir se usa el mismo algoritmo que en BFS</p>
+
+    <h4>Descripción del algoritmo(DFS)</h4>
+    <p>El algoritmo navega la gráfica para marcar las rutas desde el nodo raíz a todos los demas nodos. Tiene tiempo de ejecución: \( T(n) = O (V+ E) \). Con V vertices y E aristas (edges).</p>
+    <h4>Pseudocódigo</h4>
+    <img src="./i5_graphs/dfs.PNG" style="width: 80%" >
+    <p>Código de (Cormen, 2001).</p>
+    <h4>Fuente bibliográfica</h4>
+    <p>Thomas H. Cormen, C. (2001). <em>Introduction to algorithms</em> (p. 604). The MIT Press.</p>
+
+    <h4>Implementación</h4>
+    <p>Realizada en Javascript. Se implementa la misma lista de adyacencia usada en BFS.</p>
+    <b>Entrada:</b>
+    <p>Recibe la gráfica en forma de lista de adyacencia, comas "," separa el nodo con los adyacentes, mientras que enter (o nueva linea) separa cada nodo en la lista.<b>Nota: Ingrese el primer nodo como la raíz. Evite espacios, o caracteres extra, ya que pueden ser leidos como otros nodos o conexiones.</b>
+    <br>
+    La imagen muestra el ejemplo que viene predeterminado.
+    <img src="./i5_graphs/exampleBFS.PNG">
+    <br>
+    La entrada \( v \) es para el nodo a buscar desde el origen.
+    </p>
+    <p>
+    \( G \) = <textarea id="entry_dfs" rows="9" cols="20" style="width: 90%">s,w,r
+r,v,s
+v,r
+w,s,t,x
+t,w,x,u
+x,w,t,u,y
+u,t,x,y
+y,x,u</textarea>
+    <br>
+    \( v \) = <textarea id="entry_dfs_v" rows="1" cols="10">v</textarea>
+    </p>
+    <button onclick="runFunc('ans_dfs','delay_dfs','dfs','entry_dfs','entry_dfs_v')" >Correr</button>
+    <br>
+    <br>
+    <b>Salida:</b>
+    <p>Ruta desde el nodo origen hasta el nodo buscado, en el caso de DFS no es necesariamente la mas corta. La gráfica ya procesada se observa en consola (por cuestion de tiempo y tener referencias circulares no se ve aqui).
+    <br> Y tiempo de ejecución de DFS, PRINT-PATH, de construir la gráfica y de la impresion de todo al final.</p>
+    <p>\( Respuesta \; \)</p>
+    <br>
+    <div id="ans_dfs"></div>
+    <div id="delay_dfs"></div>
+  </div>
 
 
   <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->

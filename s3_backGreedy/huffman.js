@@ -71,7 +71,7 @@ const wraphuff = (...rest) => { ////Wrapper/////////
   //console.log(Processed);
   var answer = huffman(Processed);
   //console.log(Processed);
-  //console.log(answer);
+  console.log(answer);
 
   //finish and return answer to print
   return answer.freq;

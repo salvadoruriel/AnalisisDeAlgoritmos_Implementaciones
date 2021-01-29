@@ -1,4 +1,5 @@
 import wrapBFS from './s5_graphs/bfs.js';
+import wrapDFS from './s5_graphs/dfs.js';
 
 //explicacion en s1_sorting.js //totally converted to generic
 const actualPromise = (func, ...rest) => {
@@ -57,6 +58,11 @@ const runFunc = (idOutAns, idOutTime, func, idEntry, ...rest) => {
       var vDest = document.getElementById(rest[0]).value;
       //console.log(text);
       measureAndOutputTime(idOutAns, idOutTime, wrapBFS, text, vDest);
+      break;
+    case 'dfs':
+      var text = document.getElementById(idEntry).value.split(/\r?\n/);
+      var vDest = document.getElementById(rest[0]).value;
+      measureAndOutputTime(idOutAns, idOutTime, wrapDFS, text, vDest);
       break;
     default:
       console.log("Error:" + func);

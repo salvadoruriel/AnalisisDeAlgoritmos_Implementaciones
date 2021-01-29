@@ -66,11 +66,11 @@ const wrapBFS = (...rest) => {
   console.log(G);
 
   AnsBfs = [];
-  var time2 = performance.now();
   //print_path(G, G[0], G[2]); //from "s" to "v"
   var search = G.V.find(v => v.name == rest[1]);
   //Verify node input exists //typeof guarantess a returned string
   search = (typeof search == 'undefined') ? { name: rest[1], pi: null } : search;
+  var time2 = performance.now();
   print_path(G, G[0], search); //from root to entry
   var time3 = performance.now();
 
