@@ -37,12 +37,13 @@
 <body>
 	<h1>Algoritmos de graficas dirigidas y aristas con coste</h1>
 	<br>
-  <p>Aquí se encuentran algoritmos usados en graficas dirigidas y problemas que involucran un coste.</p>
+  <p>Aquí se encuentran algoritmos usados en graficas dirigidas y problemas que involucran un coste. Resuelven el problema de caminos mas cortos con una sola fuente (o nodo raiz).</p>
   <div class="toc_container">
     <h2 class="toc_title">Índice</h2>
     <ol class="toc">
       <li><a href="#aux">Algoritmos auxiliares</a></li>
       <li><a href="#dijkstra">Dijkstra</a></li>
+      <li><a href="#bellman">Bellman Ford</a></li>
     </ol>
   </div>
 	<br>
@@ -81,7 +82,7 @@
     <p>Este algoritmo resuelve el problema de camino mas corto de una misma fuente en un problema con pesos de una grafica dirigida.</p>
 
     <h4>Descripción del algoritmo</h4>
-    <p>El algoritmo navega la gráfica para marcar las rutas desde el nodo raíz a todos los demas nodos. Tiene tiempo de ejecución: \( O((V+ E) \lg V) \). Con V vertices y E aristas (edges).</p>
+    <p>El algoritmo navega la gráfica para marcar las rutas desde el nodo raíz a todos los demas nodos considerando peso. Tiene tiempo de ejecución: \( O((V+ E) \lg V) \). Con V vertices y E aristas (edges).</p>
     <h4>Pseudocódigo</h4>
     <img src="./i6_graficasDir/dijkstra.PNG" style="max-width: 500px" >
     <p>Código de (Cormen, 2001).</p>
@@ -100,7 +101,7 @@
     <br>
     </p>
     <p>
-    \( G \) = <textarea id="entry_dijkstra" rows="9" cols="20" style="width: 90%">s;t,10;y,5
+    \( G \) = <textarea id="entry_dijkstra" rows="7" cols="20" style="width: 60%">s;t,10;y,5
 t;x,1;y,2
 x;z,4
 y;t,3;x,9;z,2
@@ -117,6 +118,50 @@ z;s,7;x,6</textarea>
     <br>
     <div id="ans_dijkstra"></div>
     <div id="delay_dijkstra"></div>
+  </div>
+
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  <div class="divSeparator"></div>
+  <h2 id="bellman">Bellman Ford  <button onclick="hideShow('div_bellman',this)" class="buttSpoiler">[ Ocultar ]</button></h2>
+  <!-- +++++++ -->
+  <div id="div_bellman">
+    <p>Este algoritmo tambien resuelve el problema de camino mas corto de una misma fuente en un problema con pesos de una grafica dirigida, pero sí puede considerar pesos negativos.</p>
+
+    <h4>Descripción del algoritmo</h4>
+    <p>El algoritmo navega la gráfica para marcar las rutas desde el nodo raíz a todos los demas nodos. Tiene tiempo de ejecución: \( O(VE) \). Con V vertices y E aristas (edges).</p>
+    <h4>Pseudocódigo</h4>
+    <img src="./i6_graficasDir/bellmanFord.PNG" style="max-width: 500px" >
+    <p>Código de (Cormen, 2001).</p>
+    <h4>Fuente bibliográfica</h4>
+    <p>Thomas H. Cormen, C. (2001). <em>Introduction to algorithms</em> (p. 651). The MIT Press.</p>
+
+    <h4>Implementación</h4>
+    <p>Realizada en Javascript.</p>
+    <b>Entrada:</b>
+    <p>Recibe la gráfica en forma de lista de adyacencia, punto y coma ";" separa el nodo con los adyacentes, coma sencilla "," separa el eje con el peso, mientras que enter (o nueva linea) separa cada nodo en la lista.<b>Nota: Ingrese el primer nodo como la raíz. Evite espacios, o caracteres extra, ya que pueden ser leidos como otros nodos o conexiones.</b>
+    <br>
+    La imagen muestra el ejemplo que viene predeterminado.
+    <img src="./i6_graficasDir/exampleBellman.PNG">
+    <br>
+    </p>
+    <p>
+    \( G \) = <textarea id="entry_bellman" rows="7" cols="20" style="width: 60%">s;t,6;y,7
+t;x,5;y,8;z,-4
+x;t,-2
+y;x,-3;z,9
+z;s,2;x,7</textarea>
+    <br>
+    </p>
+    <button onclick="runFunc('ans_bellman','delay_bellman','bellman','entry_bellman')" >Correr</button>
+    <br>
+    <br>
+    <b>Salida:</b>
+    <p>La gráfica ya procesada se observa en consola (por tener referencias circulares no se puede ver aqui, ocupa otro procesamiento).
+    <br> Y tiempo de ejecución de bellman, de construir la gráfica y de todo el wrapper.</p>
+    <p>\( Respuesta \; \)</p>
+    <br>
+    <div id="ans_bellman"></div>
+    <div id="delay_bellman"></div>
   </div>
 
 

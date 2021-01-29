@@ -1,4 +1,5 @@
 import wrapDijkstra from './s6_graficasDir/dijkstra.js';
+import wrapBellman from './s6_graficasDir/bellman.js';
 
 //explicacion en s1_sorting.js //totally converted to generic
 const actualPromise = (func, ...rest) => {
@@ -54,6 +55,10 @@ const runFunc = (idOutAns, idOutTime, func, idEntry, ...rest) => {
       var text = document.getElementById(idEntry).value.split(/\r?\n/);
       //var ArrS = text.map((txt) => parseInt(txt, 10));
       measureAndOutputTime(idOutAns, idOutTime, wrapDijkstra, text);
+      break;
+    case 'bellman':
+      var text = document.getElementById(idEntry).value.split(/\r?\n/);
+      measureAndOutputTime(idOutAns, idOutTime, wrapBellman, text);
       break;
     default:
       console.log("Error:" + func);

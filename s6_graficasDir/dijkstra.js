@@ -37,7 +37,7 @@ export const dijkstra = (G, w, s) => {
 
 const wrapDijkstra = (...rest) => {
   var timeG0 = performance.now();
-  var G = newWeightedAdjListGraph(rest[0], "G");
+  var G = newWeightedAdjListGraph(rest[0], "Dijkstra");
   var timeG1 = performance.now();
 
   var time0 = performance.now();
