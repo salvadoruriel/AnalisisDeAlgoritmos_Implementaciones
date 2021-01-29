@@ -57,6 +57,7 @@
     <ol class="toc">
       <li><a href="#scml">Subseccion común más larga (SCML)</a></li>
       <li><a href="#matrixChain">Orden de multiplicacion de matrices</a></li>
+      <li><a href="#memCutRod">Problema de cortes con mayor ganancia</a></li>
       <!--
       <li><a href="#b">b</a></li>
       -->
@@ -157,6 +158,44 @@
     <p>\( Respuesta \; \)</p>
     <div id="ans_matrixChain"></div>
     <div id="delay_matrixChain"></div>
+  </div>
+
+  
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  <div class="divSeparator"></div>
+  <h2 id="memCutRod">Problema de cortes con mayor ganancia  <button onclick="hideShow('div_memCutRod',this)" class="buttSpoiler">[ Ocultar ]</button></h2>
+  <p>Aqui se desea obtener la mejor ganancia segun cortes de distinta longitud en una vara, de las cuales cada corte tiene un precio distinto.</p>
+  <!-- +++++++ -->
+  <div id="div_memCutRod">
+    <p>Se tienen dos algoritmos pero en sí solo se diferencian por que uno es el inicio y otro hace la llamada recursivo que es donde se busca la solucion.</p>
+    <h4>Descripción del algoritmo</h4>
+    <p>Busca que precio es mejor segun el subproblema de cortes de menor tamaño, pero usando memoria evita repetir subcortes ya calculados. Tiene tiempo de ejecución: \( T(n) = O (n^2) \)</p>
+
+    <h4>Pseudocódigo</h4>
+    <img src="./i4_dinamica/memoizedCutRod.PNG">
+    <img src="./i4_dinamica/memoizedCutRodAux.PNG">
+    <p>Código de (Cormen, 2001).</p>
+
+    <h4>Fuente bibliográfica</h4>
+    <p>Thomas H. Cormen, C. (2001). <em>Introduction to algorithms</em> (p. 365). The MIT Press.</p>
+
+    <h4>Implementación</h4>
+    <p>Realizada en Javascript.</p>
+    <b>Entrada:</b>
+    <p>Recibe 1 lista con los precios posibles segun el tamaño del corte, la longitud de este arreglo es el n que se toma automaticamente para iniciar el algoritmo (siendo que vender todo sin cortes es otro precio).<b>Nota: Listas largas pueden ser lentas por el tiempo de ejecución.</b>
+    </p>
+    <p>
+    \( p \) = <textarea id="entry_memCutRod" rows="1" cols="45" style="width: 90%">1,5,8,9,10,17,17,20,24,30</textarea>
+    </p>
+    <button onclick="runFunc('ans_memCutRod','delay_memCutRod','memCutRod','entry_memCutRod')" >Correr</button>
+    <br>
+    <br>
+    <b>Salida:</b>
+    <p>Máxima ganancia posible para una vara con los precios marcados en cada tamaño de corte.
+    <br> Tiempo de ejecución de MEMOIZED-CUT-ROD y el tiempo de todo el wrapper.</p>
+    <p>\( Respuesta \; \)</p>
+    <div id="ans_memCutRod"></div>
+    <div id="delay_memCutRod"></div>
   </div>
 
 

@@ -38,19 +38,19 @@
 </head>
 
 <body>
-	<h1>Algoritmos de ordenacion</h1>
+	<h1>Algoritmos de ordenación</h1>
 	<br>
   <h4>Implementación</h4>
   <p>Realizada en Javascript. Recuerde abrir la consola para ver especificamente el código.</p>
   <b>Entrada:</b>
-  <p>Una lista de numeros separados por coma. Se puede generar una lista con n números al azar con el siguiente boton:</p>
+  <p>Una lista de números  separados por coma. Se puede generar una lista con n números al azar con el siguiente boton:</p>
   <br>
   \( n = \; \) <input type="text" id="nNums" value="420" size="3" maxlength="6">
   <button onclick="makeRandomList()">Genera lista al azar</button>
   <br>
   <br>
-	Lista de numeros a ordenar (separados por coma):
-	<textarea id="f_numeros" rows="8" cols="45" style="width: 100%">
+	Lista de números  a ordenar (separados por coma):
+	<textarea id="f_numeros " rows="8" cols="45" style="width: 100%">
 20,18,13,5,6,8,9,10,11,12,13,3,4,7,2,1,15,2,16</textarea>
   <strong>Selecciona algoritmo con el cual ordenar</strong>
 
@@ -79,7 +79,7 @@
     <tr>
       <td><button onclick="order('selSor')" value="selSort">SELECTION-SORT</button></td>
       <td>
-        Este algoritmo busca el elemento mas chico y lo acomoda al inicio, y continua ordenando los demas elementos similarmente pero con el inicio siendo despues el número acomodado anterior. Tiene tiempo de ejecución \( T(n) = \Theta(n^2) \).
+        Este algoritmo busca el elemento mas chico y lo acomoda al inicio, y continua ordenando los demas elementos similarmente pero con el inicio siendo después el número acomodado anterior. Tiene tiempo de ejecución \( T(n) = \Theta(n^2) \).
       </td>
       <td>
         <pre id="selSor-code" style="display:hidden;">
@@ -191,7 +191,7 @@
         <button onclick="order('radSor')" value="radSort">RADIX-SORT</button>
       </td>
       <td>
-        Aqui ordena en base a los digitos de los números, por lo que requiere de un algoritmo auxiliar que sea "estable" (que no cambie el orden de números si hay empates), tambien supone que cada número es constante \( \Theta (1) \) y que es natural. Cumpliendo esto tiene tiempo de ejecución \( T(n) = \Theta (n) \). Usamos Counting Sort en esta implementacion.
+        Aqui ordena en base a los dígitos de los números, por lo que requiere de un algoritmo auxiliar que sea "estable" (que no cambie el orden de números si hay empates), tambien supone que cada número es constante \( \Theta (1) \) y que es natural. Cumpliendo esto tiene tiempo de ejecución \( T(n) = \Theta (n) \). Usamos Counting Sort en esta implementación.
       </td>
       <td>
         <img src="./i1_sorting/radixSort.PNG" style="max-width: 400px;">
@@ -203,7 +203,7 @@
   </table>
 
   <b>Salida:</b>
-  <p>El tiempo que tardo en correr el algoritmo seleccionado y la lista de números ya ordenada.</p>
+  <p>El tiempo que tardó en ordenar el algoritmo seleccionado y la lista de números ya ordenada.</p>
   <div id="loading"></div>
   <div id="delay"></div>
 	<textarea id="ans" rows="8" cols="45" style="width: 100%" disabled=true>

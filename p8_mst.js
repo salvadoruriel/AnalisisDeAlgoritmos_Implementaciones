@@ -1,6 +1,4 @@
-import wrapLCS from './s4_dinamica/scml.js';
-import wrapMatrixChain from './s4_dinamica/matrixChain.js';
-import wrapMemCut from './s4_dinamica/memoizedCutRod.js';
+import wrapPrim from './s8_mst/prim.js';
 
 //explicacion en s1_sorting.js //totally converted to generic
 const actualPromise = (func, ...rest) => {
@@ -52,22 +50,10 @@ const runFunc = (idOutAns, idOutTime, func, idEntry, ...rest) => {
   //adjusting each different function and sending to measure
   //MUST use WRAPPERS inside each function to be this generic.
   switch (func) { //dirty but avoids exposing to html and cluttering stuff.
-    case 'scml':
-      var text1 = document.getElementById(idEntry).value.split(',');
+    case 'prim':
+      var text = document.getElementById(idEntry).value.split(/\r?\n/);
       //var ArrS = text.map((txt) => parseInt(txt, 10));
-      var text2 = document.getElementById(rest[0]).value.split(',');
-      //var ArrF = text.map((txt) => parseInt(txt, 10));
-      measureAndOutputTime(idOutAns, idOutTime, wrapLCS, text1, text2);
-      break;
-    case 'matrixChain':
-      var text = document.getElementById(idEntry).value.split(',');
-      var ArrS = text.map((txt) => parseInt(txt, 10));
-      measureAndOutputTime(idOutAns, idOutTime, wrapMatrixChain, ArrS);
-      break;
-    case 'memCutRod':
-      var text = document.getElementById(idEntry).value.split(',');
-      var Arr = text.map((txt) => parseInt(txt, 10));
-      measureAndOutputTime(idOutAns, idOutTime, wrapMemCut, Arr);
+      measureAndOutputTime(idOutAns, idOutTime, wrapPrim, text);
       break;
     default:
       console.log("Error:" + func);
@@ -75,7 +61,7 @@ const runFunc = (idOutAns, idOutTime, func, idEntry, ...rest) => {
   }
   document.getElementById(idOutAns).innerHTML = 'Si este mensaje dura más de 5 segundos entonces hubo un ¡Error! Checar consola.';
 }
-window.runFunc = runFunc
+window.runFunc = runFunc;
 
 const hideShow = (idDiv, objBut) => {
   var section = document.getElementById(idDiv);

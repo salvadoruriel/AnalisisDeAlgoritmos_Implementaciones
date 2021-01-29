@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>Arboles generadores de peso minimo</title>
+	<link href="style.css" rel="stylesheet" type="text/css" />
+	<style type="text/css">
+	</style>
+	<script src="./p8_mst.js" type="module"></script>
+
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+	<!-- https://www.npmjs.com/package/pseudocode -->
+	<script>
+		MathJax = {
+        tex: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            displayMath: [['$$','$$'], ['\\[','\\]']],
+            processEscapes: true,
+            processEnvironments: true,
+        }
+    }
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/tex-chtml.js" integrity="sha256-3Fdoa5wQb+JYfEmTpQHx9sc/GuwpfC/0R9EpBki+mf8="
+	 crossorigin>
+
+	</script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/pseudocode@latest/build/pseudocode.min.js">
+
+	</script>
+</head>
+
+<body>
+  <!-- minimum spanning tree -->
+	<h1>Arboles generadores de peso mínimo</h1>
+	<br>
+  <p>Aquí se encuentran algoritmos que crean arboles generadores de peso mínimo, por su nombre en ingles "Minimum spanning tree".</p>
+  <div class="toc_container">
+    <h2 class="toc_title">Índice</h2>
+    <ol class="toc">
+      <li><a href="#prim">Algoritmo de Prim</a></li>
+    </ol>
+  </div>
+	<br>
+
+  <div class="divSeparator"></div>
+  <h2 id="prim">Algoritmo de Prim  <button onclick="hideShow('div_prim',this)" class="buttSpoiler">[ Ocultar ]</button></h2>
+  <!-- +++++++ -->
+  <div id="div_prim">
+    <p>Este algoritmo funciona de forma muy similar al de dijkstra pero con la propiedad de conservar conexidad.</p>
+
+    <h4>Descripción del algoritmo</h4>
+    <p>El algoritmo funciona de forma casi identica a Dijkstra. Tiene tiempo de ejecución: \( O((n+m) \lg n) \).</p>
+    <h4>Pseudocódigo</h4>
+    <img src="./i8_mst/prim.PNG" style="max-width: 500px" >
+    <p>Código de (Cormen, 2001).</p>
+    <h4>Fuente bibliográfica</h4>
+    <p>Thomas H. Cormen, C. (2001). <em>Introduction to algorithms</em> (p. 634). The MIT Press.</p>
+
+    <h4>Implementación</h4>
+    <p>Realizada en Javascript.</p>
+    <b>Entrada:</b>
+    <p>Recibe la gráfica en forma de lista de adyacencia, punto y coma ";" separa el nodo con los adyacentes, coma sencilla "," separa el eje con el peso, mientras que enter (o nueva linea) separa cada nodo en la lista.<b>Nota: Ingrese el primer nodo como la raíz. Evite espacios, o caracteres extra, ya que pueden ser leidos como otros nodos o conexiones.</b>
+    <br>
+    La imagen muestra el ejemplo que viene predeterminado.
+    <img src="./i8_mst/examplePrim.PNG">
+    <br>
+    </p>
+    <p>
+    \( G \) = <textarea id="entry_prim" rows="10" cols="20" style="width: 60%">a;b,4;h,8
+b;a,4;h,11;c,8
+c;b,8;i,2;d,7;f,4
+d;c,7;f,14;e,9
+e;d,9;f,10
+f;c,4;d,14;g,2
+g;f,2;i,6;h,1
+h;a,8;b,11;i,7;g,1
+i;c,2;h,7;g,6</textarea>
+    <br>
+    </p>
+    <button onclick="runFunc('ans_prim','delay_prim','prim','entry_prim')" >Correr</button>
+    <br>
+    <br>
+    <b>Salida:</b>
+    <p>La gráfica ya procesada se observa en consola (por tener referencias circulares no se puede ver aqui, eso ocupa otro procesamiento), los caminos de regreso son marcados por la propieda .pi de cada nodo, puede comparar el caso mostrado con la solucion en Cormen p.635 .
+    <br> Y tiempo de ejecución de MST-PRIM, de construir la gráfica y de todo el wrapper.</p>
+    <p>\( Respuesta \; \)</p>
+    <br>
+    <div id="ans_prim"></div>
+    <div id="delay_prim"></div>
+  </div>
+
+
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+  <script>
+    //var codes = ['a-code','b-code'];
+    var codes = [];
+    for(cod of codes){
+      pseudocode.renderElement(document.getElementById( cod),{lineNumber: true, lineNumberPunc: ' ', noEnd: true});
+    }
+  </script>
+
+</body>
+
+<footer>
+	Hecho por Salvador
+</footer>
+
+</html>
