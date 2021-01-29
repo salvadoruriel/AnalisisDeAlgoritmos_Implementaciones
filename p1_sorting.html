@@ -82,7 +82,28 @@
         Este algoritmo busca el elemento mas chico y lo acomoda al inicio, y continua ordenando los demas elementos similarmente pero con el inicio siendo despues el número acomodado anterior. Tiene tiempo de ejecución \( T(n) = \Theta(n^2) \).
       </td>
       <td>
-        <img src="./i1_sorting/insertionSort.PNG" style="max-width: 400px;">
+        <pre id="selSor-code" style="display:hidden;">
+          % This algorithm is mine
+          \begin{algorithm}
+          \caption{SELECTION-SORT(A)}
+          \begin{algorithmic}
+            \FOR{$i \gets 1 $ \TO $length[A] -1$}
+              \STATE $key \gets i$
+              \STATE $min \gets A[i]$
+              \FOR{$j \gets i+1 $ \TO $length[A]$}
+                \IF{$A[j] < min$}
+                  \STATE $key \gets j$
+                  \STATE $min \gets A[j]$
+                \ENDIF
+              \ENDFOR
+              \STATE $min \gets A[i]$ %min usado como valor temporal
+              \STATE $A[i] \gets A[j]$ % para intercambiar
+              \STATE $A[j] \gets min$
+            \ENDFOR
+            \RETURN x
+          \end{algorithmic}
+          \end{algorithm}
+        </pre>
       </td>
       <td>
         Algoritmo creado por ser mencionado como problema en el Cormen
@@ -190,7 +211,7 @@
   </textarea>
 
   <script>
-    var codes = [];
+    var codes = ['selSor-code'];
     for(cod of codes){
       pseudocode.renderElement(document.getElementById( cod),{lineNumber: true, lineNumberPunc: ' ', noEnd: true});
     }
