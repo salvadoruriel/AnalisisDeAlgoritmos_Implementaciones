@@ -93,10 +93,12 @@ table, th, td{
 }*/
 
 .Opciones{
+  /*
   display: flex;
   flex-direction: column;
   margin-top: 3px;
   margin-bottom: 3px;
+  */
 }
 .Opciones button{
   margin-top: 5px;
